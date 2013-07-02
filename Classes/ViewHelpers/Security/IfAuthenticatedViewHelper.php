@@ -30,14 +30,19 @@ namespace Sjr\SjrOffers\ViewHelpers\Security;
 class IfAuthenticatedViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\IfViewHelper {
 
 	/**
+	 * @var \Sjr\SjrOffers\Service\AccessControlService
+	 * @inject
+	 */
+	protected $accessControlService;
+
+	/**
 	 * Checks, if the given frontend user has access to the given object
 	 *
 	 * @param mixed $person The person to be tested for login
 	 * @return string The output
 	 */
 	public function render($person = NULL) {
-		$accessControllService = t3lib_div::makeInstance('Tx_SjrOffers_Service_AccessControlService');
-		if ($accessControllService->isLoggedIn($person) || $accessControllService->backendAdminIsLoggedIn()) {
+		if ($this->accessControlService->isLoggedIn($person) || $this->accessControlService->backendAdminIsLoggedIn()) {
 			return $this->renderThenChild();
 		} else {
 			return $this->renderElseChild();

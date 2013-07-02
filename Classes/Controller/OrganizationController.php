@@ -33,22 +33,34 @@ namespace Sjr\SjrOffers\Controller;
 class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController {
 
 	/**
-	 * @var \Sjr\SjrOffers\Domain\Model\OrganizationRepository
+	 * @var \Sjr\SjrOffers\Service\AccessControlService
+	 * @inject
+	 */
+	protected $accessControlService;
+
+	/**
+	 * @var \Sjr\SjrOffers\Domain\Repository\OrganizationRepository
+	 * @inject
 	 */
 	protected $organizationRepository;
 
 	/**
-	 * Initializes the current action
-	 *
-	 * @return void
+	 * @var \Sjr\SjrOffers\Domain\Repository\OfferRepository
+	 * @inject
 	 */
-	public function initializeAction() {
-		$this->accessControllService = t3lib_div::makeInstance('Tx_SjrOffers_Service_AccessControlService');
-		$this->organizationRepository = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Repository_OrganizationRepository');
-		$this->offerRepository = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Repository_OfferRepository');
-		$this->personRepository = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Repository_PersonRepository');
-		$this->categoryRepository = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Repository_CategoryRepository');
-	}
+	protected $offerRepository;
+
+	/**
+	 * @var \Sjr\SjrOffers\Domain\Repository\PersonRepository
+	 * @inject
+	 */
+	protected $personRepository;
+
+	/**
+	 * @var \Sjr\SjrOffers\Domain\Repository\CategoryRepository
+	 * @inject
+	 */
+	protected $categoryRepository;
 
 	/**
 	 * Index action for this controller. Displays a list of organizations.
@@ -68,7 +80,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	 * @dontvalidate $newContact
 	 */
 	public function showAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Person $newContact = NULL) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($organization->getAdministrator())) {
 			$contacts = $organization->getAllContacts();
 			$this->view->assign('offers', $this->offerRepository->findForAdmin($organization));
 		} else {
@@ -97,7 +109,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	 * @dontvalidate $organization
 	 */
 	public function editAction(\Sjr\SjrOffers\Domain\Model\Organization $organization) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($organization->getAdministrator())) {
 			$this->view->assign('organization', $organization);
 			$this->view->assign('contacts', $this->personRepository->findAll());
 		} else {
@@ -112,7 +124,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	 * @return void
 	 */
 	public function updateAction(\Sjr\SjrOffers\Domain\Model\Organization $organization) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($organization->getAdministrator())) {
 			$this->organizationRepository->update($organization);
 		} else {
 			$this->flashMessages->add('Sie haben keine Berechtigung die Aktion auszuführen.');
@@ -128,7 +140,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	 * @return void
 	 */
 	public function createContactAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Person $newContact) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($organization->getAdministrator())) {
 			$organization->addContact($newContact);
 		} else {
 			$this->flashMessages->add('Sie haben keine Berechtigung die Aktion auszuführen.');
@@ -145,7 +157,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	 * @dontvalidatehmac
 	 */
 	public function updateContactAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Person $contact) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($organization->getAdministrator())) {
 			$this->personRepository->update($contact);
 		} else {
 			$this->flashMessages->add('Sie haben keine Berechtigung die Aktion auszuführen.');
@@ -162,7 +174,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	 * @dontvalidate $contact
 	 */
 	public function removeContactAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Person $contact) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($organization->getAdministrator())) {
 			$organization->removeContact($contact);
 			$this->personRepository->remove($contact);
 		} else {
@@ -179,7 +191,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	 * @dontvalidate $offer
 	 */
 	public function removeOfferAction(\Sjr\SjrOffers\Domain\Model\Offer $offer) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$organization = $offer->getOrganization();
 			$organization->removeOffer($offer);
 		} else {
@@ -194,7 +206,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	 * @return void
 	 */
 	public function deleteAllAction() {
-		if ($this->accessControllService->backendAdminIsLoggedIn()) {
+		if ($this->accessControlService->backendAdminIsLoggedIn()) {
 			$organizations = $this->organizationRepository->findAll();
 			foreach ($organizations as $organization) {
 				$this->organizationRepository->remove($organization);

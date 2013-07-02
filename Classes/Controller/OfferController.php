@@ -34,22 +34,39 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 
 	/**
 	 * @var \Sjr\SjrOffers\Domain\Model\OfferRepository
+	 * @inject
 	 */
 	protected $offerRepository;
 
 	/**
-	 * Initializes the current action
-	 *
-	 * @return void
+	 * @var \Sjr\SjrOffers\Service\AccessControlService
+	 * @inject
 	 */
-	public function initializeAction() {
-		$this->accessControllService = t3lib_div::makeInstance('Tx_SjrOffers_Service_AccessControlService');
-		$this->offerRepository = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Repository_OfferRepository');
-		$this->organizationRepository = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Repository_OrganizationRepository');
-		$this->personRepository = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Repository_PersonRepository');
-		$this->categoryRepository = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Repository_CategoryRepository');
-		$this->regionRepository = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Repository_RegionRepository');
-	}
+	protected $accessControlService;
+
+	/**
+	 * @var \Sjr\SjrOffers\Domain\Repository\OrganizationRepository
+	 * @inject
+	 */
+	protected $organizationRepository;
+
+	/**
+	 * @var \Sjr\SjrOffers\Domain\Repository\PersonRepository
+	 * @inject
+	 */
+	protected $personRepository;
+
+	/**
+	 * @var \Sjr\SjrOffers\Domain\Repository\CategoryRepository
+	 * @inject
+	 */
+	protected $categoryRepository;
+
+	/**
+	 * @var \Sjr\SjrOffers\Domain\Repository\RegionRepository
+	 * @inject
+	 */
+	protected $regionRepository;
 
 	/**
 	 * Renders a list of offers
@@ -117,7 +134,7 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	 * @dontverifyrequesthash
 	 */
 	public function newAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Offer $newOffer = NULL) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($organization->getAdministrator())) {
 			$this->view->assign('organization', $organization);
 			$this->view->assign('newOffer', $newOffer);
 			$this->view->assign('regions', $this->regionRepository->findAll());
@@ -137,7 +154,7 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	 * @dontverifyrequesthash
 	 */
 	public function createAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Offer $newOffer, array $attendanceFees = array()) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($organization->getAdministrator())) {
 			$newOffer = $this->createAndAddAttendanceFees($newOffer, $attendanceFees);
 			$organization->addOffer($newOffer);
 			$newOffer->setOrganization($organization);
@@ -156,7 +173,7 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	 * @dontverifyrequesthash
 	 */
 	public function editAction(\Sjr\SjrOffers\Domain\Model\Offer $offer) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$this->view->assign('offer', $offer);
 			$this->view->assign('regions', $this->regionRepository->findAll());
 		} else {
@@ -173,7 +190,7 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	 * @dontverifyrequesthash
 	 */
 	public function updateAction(\Sjr\SjrOffers\Domain\Model\Offer $offer, array $attendanceFees = array()) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$offer->removeAllAttendanceFees();
 			$offer = $this->createAndAddAttendanceFees($offer, $attendanceFees);
 			$this->offerRepository->update($offer);
@@ -190,7 +207,7 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	 * @return void
 	 */
 	public function deleteAction(\Sjr\SjrOffers\Domain\Model\Offer $offer) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$this->offerRepository->remove($offer);
 		} else {
 			$this->flashMessages->add('Sie haben keine Berechtigung die Aktion auszuführen.');
@@ -206,7 +223,7 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	 * @return void
 	 */
 	public function createContactAction(\Sjr\SjrOffers\Domain\Model\Offer $offer, \Sjr\SjrOffers\Domain\Model\Person $newContact) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$offer->setContact($newContact);
 		} else {
 			$this->flashMessages->add('Sie haben keine Berechtigung die Aktion auszuführen.');
@@ -223,7 +240,7 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	 * @dontverifyrequesthash
 	 */
 	public function setContactAction(\Sjr\SjrOffers\Domain\Model\Offer $offer) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$this->offerRepository->update($offer);
 		} else {
 			$this->flashMessages->add('Sie haben keine Berechtigung die Aktion auszuführen.');
@@ -240,7 +257,7 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	 * @dontverifyrequesthash
 	 */
 	public function updateContactAction(\Sjr\SjrOffers\Domain\Model\Offer $offer, \Sjr\SjrOffers\Domain\Model\Person $contact) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$this->personRepository->update($contact);
 		} else {
 			$this->flashMessages->add('Sie haben keine Berechtigung die Aktion auszuführen.');
@@ -256,7 +273,7 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	 * @return void
 	 */
 	public function removeContactAction(\Sjr\SjrOffers\Domain\Model\Offer $offer, \Sjr\SjrOffers\Domain\Model\Person $contact) {
-		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
+		if ($this->accessControlService->backendAdminIsLoggedIn() || $this->accessControlService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$offer->removeContact($contact);
 		} else {
 			$this->flashMessages->add('Sie haben keine Berechtigung die Aktion auszuführen.');
