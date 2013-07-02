@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'sjr_offers'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_sjroffers_domain_model_organization">Organisation</label>
+			<label index="tx_sjroffers_domain_model_organization.status">Status</label>
+			<label index="tx_sjroffers_domain_model_organization.status.0">undefiniert</label>
+			<label index="tx_sjroffers_domain_model_organization.status.1">Mitglied</label>
+			<label index="tx_sjroffers_domain_model_organization.status.2">Nicht Mitglied</label>
+			<label index="tx_sjroffers_domain_model_organization.name">Name der Organisation</label>
+			<label index="tx_sjroffers_domain_model_organization.description">Kurze Beschreibung der Organisation</label>
+			<label index="tx_sjroffers_domain_model_organization.contacts">Kontaktadressen</label>
+			<label index="tx_sjroffers_domain_model_organization.offers">Angebote</label>
+			<label index="tx_sjroffers_domain_model_organization.administrator">Administrator</label>
+			<label index="tx_sjroffers_domain_model_offer">Angebot</label>
+			<label index="tx_sjroffers_domain_model_offer.title">Titel</label>
+			<label index="tx_sjroffers_domain_model_offer.teaser">Anreißer (max. 2zeilige Kurzbeschreibung)</label>
+			<label index="tx_sjroffers_domain_model_offer.description">Ausführliche Beschreibung des Angebots</label>
+			<label index="tx_sjroffers_domain_model_offer.dates">Datum der Veranstaltung (kurze textliche Beschreibung)</label>
+			<label index="tx_sjroffers_domain_model_offer.venue">Veranstaltungsort (kurze textliche Beschreibung)</label>
+			<label index="tx_sjroffers_domain_model_offer.services">Leistungen</label>
+			<label index="tx_sjroffers_domain_model_offer.age_range">Altersbereich</label>
+			<label index="tx_sjroffers_domain_model_offer.date_range">Angebotszeitraum</label>
+			<label index="tx_sjroffers_domain_model_offer.attendance_range">Teilnehmerzahl</label>
+			<label index="tx_sjroffers_domain_model_offer.attendance_fees">Teilnahmegebühren</label>
+			<label index="tx_sjroffers_domain_model_offer.contacts">Ansprechpartner</label>
+			<label index="tx_sjroffers_domain_model_offer.categories">Kategorien</label>
+			<label index="tx_sjroffers_domain_model_offer.regions">Stadtteile</label>
+			<label index="tx_sjroffers_domain_model_person">Kontaktadresse</label>
+			<label index="tx_sjroffers_domain_model_person.role">Aufgabengebiet, Zuständigkeit</label>
+			<label index="tx_sjroffers_domain_model_agerange">Altersbereich</label>
+			<label index="tx_sjroffers_domain_model_agerange.minimum_value">Mindestalter</label>
+			<label index="tx_sjroffers_domain_model_agerange.maximum_value">Höchstalter</label>
+			<label index="tx_sjroffers_domain_model_daterange">Angebotszeitraum</label>
+			<label index="tx_sjroffers_domain_model_daterange.minimum_value">gültig vom</label>
+			<label index="tx_sjroffers_domain_model_daterange.maximum_value">gültig bis zum</label>
+			<label index="tx_sjroffers_domain_model_attendancerange">Teilnehmerzahl</label>
+			<label index="tx_sjroffers_domain_model_attendancerange.minimum_value">mindestens</label>
+			<label index="tx_sjroffers_domain_model_attendancerange.maximum_value">höchstens</label>
+			<label index="tx_sjroffers_domain_model_attendancefee">Teilnahmegebühr</label>
+			<label index="tx_sjroffers_domain_model_attendancefee.offer">für das Angebot</label>
+			<label index="tx_sjroffers_domain_model_attendancefee.amount">Betrag</label>
+			<label index="tx_sjroffers_domain_model_attendancefee.comment">Anmerkung</label>
+			<label index="tx_sjroffers_domain_model_category">Kategorien</label>
+			<label index="tx_sjroffers_domain_model_category.title">Bezeichnung</label>
+			<label index="tx_sjroffers_domain_model_category.description">Beschreibung der Kategorie</label>
+			<label index="tx_sjroffers_domain_model_category.is_internal">Nur im Backend sichtbar (interne Kategorie)</label>
+			<label index="tx_sjroffers_domain_model_status">Status</label>
+			<label index="tx_sjroffers_domain_model_status.title">Bezeichnung</label>
+			<label index="tx_sjroffers_domain_model_status.description">Beschreibung des Status</label>
+			<label index="tx_sjroffers_domain_model_status.allowed_categories">Erlaubte Kategorien</label>
+			<label index="tx_sjroffers_domain_model_region">Stadtteile</label>
+			<label index="tx_sjroffers_domain_model_region.name">Name des Stadtteils</label>
+			<label index="tx_sjroffers_organization_person_mm">Organisation - Kontakt</label>
+			<label index="tx_sjroffers_organization_person_mm.organization">Organisation</label>
+			<label index="tx_sjroffers_organization_person_mm.contact">Kontakt</label>
+		</languageKey>
+	</data>
+</T3locallang>

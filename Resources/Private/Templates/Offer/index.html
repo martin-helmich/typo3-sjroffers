@@ -1,0 +1,78 @@
+{namespace sjr=Tx_SjrOffers_ViewHelpers}
+<f:layout name="default" />
+<f:section name="content">
+
+<f:render partial="formErrors" arguments="{formName: 'demand'}" />
+<table class="tx-sjroffers-table contenttable" border="0" width="100%">
+	<tr>
+		<td><strong>Angebotszeitraum</strong></td>
+		<td><strong>Angebot</strong></td>
+		<td><strong>Alter</strong></td>
+		<td><strong>Kategorien</strong></td>
+		<td><strong>Anbieter</strong></td>
+	</tr>
+	<f:form class="tx-sjroffers-form" method="post" action="index" name="demand" object="{demand}">
+		<tr>
+			<td valign="top" ><noscript><f:form.submit value="Jetzt Filtern ->"/></noscript></td>
+			<td valign="top" ><f:form.textbox id="searchWord" property="searchWord" style="width: 90%;" additionalAttributes="{onChange : 'document.demand.submit();'}" /></td>
+			<td valign="top" ><f:form.textbox id="age" property="age" size="4" additionalAttributes="{onChange : 'document.demand.submit();'}" /></td>
+			<td valign="top" >
+				<f:form.select id="categories" property="category" options="{categories}" optionValueField="uid" style="width: 90%;" additionalAttributes="{onChange : 'document.demand.submit();'}"><select><option>###dummy###</option></select></f:form.select><br />
+				<f:form.select id="regions" property="region" options="{regions}" style="width: 90%;" additionalAttributes="{onChange : 'document.demand.submit();'}"><select><option>###dummy###</option></select></f:form.select>
+			</td>
+			<td valign="top" ><f:form.select id="organizations" property="organization" options="{organizations}" optionLabelField="name" style="width: 100%;" additionalAttributes="{onChange : 'document.demand.submit();'}"><select><option>###dummy###</option></select></f:form.select></td>
+		</tr>
+	</f:form>
+	<f:if condition="{offers}">
+		<f:then>
+			<f:for each="{offers}" as="offer">
+				<tr>
+					<td valign="top" width="20%">
+						<sjr:format.dateRange>{offer.dateRange}</sjr:format.dateRange>
+					</td>
+					<td valign="top" width="30%">
+						<f:link.action action="show" controller="Offer" arguments="{offer : offer}"><strong>{offer.title}</strong></f:link.action>
+						<f:if condition="{offer.teaser}">
+							<f:then>
+								<br />{offer.teaser}
+							</f:then>
+							<f:else>
+								<f:if condition="{offer.description}">
+									<br /><f:format.crop maxCharacters="50">{offer.description}</f:format.crop>
+								</f:if>
+							</f:else>
+						</f:if>
+					</td>
+					<td valign="top">
+						<sjr:format.numericRange>{offer.ageRange}</sjr:format.numericRange>
+					</td>
+					<td valign="top">
+						<f:if condition="{offer.categories}">
+							<f:then>
+								<ul>
+									<f:for each="{offer.categories}" as="category">
+										<f:if condition="{category.isInternal} == 0">
+										<li>{category.title}</li>
+										</f:if>
+									</f:for>
+								</ul>
+							</f:then>
+							<f:else>
+								&nbsp;
+							</f:else>
+						</f:if>
+					</td>
+					<td valign="top" width="30%">
+						<f:link.action action="show" controller="Organization" arguments="{organization : offer.organization}">{offer.organization.name}</f:link.action>
+					</td>
+				</tr>
+			</f:for>
+		</f:then>
+		<f:else>
+			<tr>
+				<td colspan="5">Zur Zeit leider keine Angebote.</td>
+			</tr>
+		</f:else>
+	</f:if>
+</table>
+</f:section>

@@ -1,0 +1,42 @@
+plugin.tx_sjroffers {
+	settings {
+		propertiesToSearch = title,teaser,description
+		allowedStates = 
+		listCategories = 
+		selectableCategories = 
+	}
+	view {
+		templateRootPath = {$plugin.tx_sjroffers.view.templateRootPath}
+		partialRootPath = {$plugin.tx_sjroffers.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_sjroffers.view.layoutRootPath}
+	}
+}
+
+plugin.tx_sjroffers._CSS_DEFAULT_STYLE (
+	form.tx-sjroffers-form label {
+		font-weight: bold;
+		display: block;
+		vertical-align: top;
+		margin: 1em 0 0 0;
+	}
+	td.tx-sjroffers-column0 {
+		font-weight: bold;
+	}
+	table.tx-sjroffers-table ul li{
+		padding: 0 !important;
+		margin: 0 !important;
+		list-style-type: none;
+	}
+)
+
+page.includeCSS { 
+	tx_sjroffers_file_1 = EXT:sjr_offers/Resources/Public/Styles/smoothness/jquery-ui-1.7.2.custom.css
+}
+
+page.includeJS {
+	tx_sjroffers_file_1 = EXT:sjr_offers/Resources/Public/Scripts/jquery-1.3.2.min.js
+	tx_sjroffers_file_2 = EXT:sjr_offers/Resources/Public/Scripts/jquery-ui-1.7.2.custom.min.js
+	tx_sjroffers_file_3 = EXT:sjr_offers/Resources/Public/Scripts/ui/css/smoothness/jquery-ui-1.7.2.custom.css
+	tx_sjroffers_file_4 = EXT:sjr_offers/Resources/Public/Scripts/ui/i18n/ui.datepicker-de.js
+	tx_sjroffers_file_5 = EXT:sjr_offers/Resources/Public/Scripts/tx_sjroffers.js
+}

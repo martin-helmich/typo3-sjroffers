@@ -1,0 +1,19 @@
+{namespace sjr=Tx_SjrOffers_ViewHelpers}
+<f:layout name="default" />
+<f:section name="content">
+
+	<f:if condition="{organizations}">
+		<f:then>
+			<ul>
+				<f:for each="{organizations}" as="organization">
+					<li>
+						<f:link.action action="show" arguments="{organization : organization}">{organization.name}</f:link.action> (<f:count subject="{organization.offers}" /> Angebote)
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			<p>Es sind noch keine Daten eingetragen worden.</p>
+		</f:else>
+	</f:if>
+</f:section>

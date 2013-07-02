@@ -1,0 +1,144 @@
+{namespace sjr=Tx_SjrOffers_ViewHelpers}
+<f:layout name="default" />
+<f:section name="content">
+	<h2>{organization.name}
+		<sjr:security.ifAuthenticated person="{organization.administrator}">
+			&nbsp;<f:link.action action="edit" arguments="{organization : organization}"><f:image src="EXT:sjr_offers/Resources/Public/Icons/edit.gif" alt="edit" /></f:link.action>
+		</sjr:security.ifAuthenticated>
+	</h2>
+	
+	<p>
+		<f:if condition="{organization.address}"><f:format.nl2br>{organization.address}</f:format.nl2br></f:if>
+		<f:if condition="{organization.telephoneNumber}"><br />Telefon:&nbsp;{organization.telephoneNumber}</f:if>
+		<f:if condition="{organization.telefaxNumber}"><br />Fax:&nbsp;{organization.telefaxNumber}</f:if>
+		<f:if condition="{organization.emailAddress}"><br />Email:&nbsp;<a href="mailto:{organization.emailAddress}">{organization.emailAddress}</a></f:if>
+		<f:if condition="{organization.url}"><br />Web:&nbsp;<a href="{organization.url}">{organization.url}</a></f:if>
+	</p>
+	<p><f:format.nl2br>{organization.description}</f:format.nl2br></p>
+
+	<f:if condition="{contacts}">
+		<h3>Ansprechpartner</h3>
+		<ul>
+		<f:for each="{contacts}" as="contact">
+			<li>
+				<sjr:security.ifAuthenticated person="{organization.administrator}">
+					<a href="#" class="toggleButton"><f:image src="EXT:sjr_offers/Resources/Public/Icons/edit.gif" alt="edit" /></a>
+					<f:link.action controller="Organization" action="removeContact" arguments="{contact : contact, organization : organization}" additionalAttributes="{onclick : 'return confirm(\'Der Kontakt wird von der Organisation und allen Angeboten enfernt und endgültig gelöscht.\')'}"><f:image src="EXT:sjr_offers/Resources/Public/Icons/recycler.gif" alt="delete" /></f:link.action>
+				</sjr:security.ifAuthenticated>
+				<f:render partial="contact" arguments="{contact : contact}" />
+				<sjr:security.ifAuthenticated person="{organization.administrator}">
+					<f:render partial="formErrors" arguments="{formName: 'person'}" />
+					<f:form class="tx-sjroffers-form toggleForm" style="display: none;" method="post" action="updateContact" controller="Organization" name="contact" object="{contact}" arguments="{organization: organization}">
+						<label for="name">Name</label>
+						<f:form.textbox property="name" size="46" /><br />
+						<label for="role">Zuständigkeit, Aufgabengebiet</label>
+						<f:form.textbox property="role" size="46" /><br />
+						<label for="address">Adresse</label>
+						<f:form.textarea property="address" rows="6" cols="46" /><br />
+						<label for="telephoneNumber">Telefon</label>
+						<f:form.textbox property="telephoneNumber" size="46" /><br />
+						<label for="telefaxNumber">Telefax</label>
+						<f:form.textbox property="telefaxNumber" size="46" /><br />
+						<label for="emailAddress">E-Mail</label>
+						<f:form.textbox property="emailAddress" size="46" /><br />
+						<label for="url">Homepage</label>
+						<f:form.textbox property="url" size="46" /><br />
+						<f:form.submit value="Änderungen speichern"/>
+					</f:form>
+				</sjr:security.ifAuthenticated>
+			</li>
+		</f:for>
+		</ul>
+	</f:if>
+	
+	<sjr:security.ifAuthenticated person="{organization.administrator}">
+		<a href="#" id="toggleButton"><f:image src="EXT:sjr_offers/Resources/Public/Icons/new_record.gif" alt="new" />&nbsp;Neue Kontaktperson</a>
+		<f:form class="tx-sjroffers-form" id="toggleForm" style="display: none;" method="post" controller="Organization" action="createContact" name="newContact" object="{newContact}" arguments="{organization: organization}">
+			<f:render partial="formErrors" arguments="{formName: 'newContact'}" />
+			<label for="name">Name</label>
+			<f:form.textbox property="name" size="46" /><br />
+			<label for="role">Zuständigkeit, Aufgabengebiet</label>
+			<f:form.textbox property="role" size="46" /><br />
+			<label for="address">Adresse</label>
+			<f:form.textarea property="address" rows="6" cols="46" /><br />
+			<label for="telephoneNumber">Telefon</label>
+			<f:form.textbox property="telephoneNumber" size="46" /><br />
+			<label for="telefaxNumber">Telefax</label>
+			<f:form.textbox property="telefaxNumber" size="46" /><br />
+			<label for="emailAddress">E-Mail</label>
+			<f:form.textbox property="emailAddress" size="46" /><br />
+			<label for="url">Homepage</label>
+			<f:form.textbox property="url" size="46" /><br />
+			<f:form.submit value="Kontakt anlegen"/>
+		</f:form>
+	</sjr:security.ifAuthenticated>
+
+	<sjr:security.ifAuthenticated person="{organization.administrator}">
+		<p><f:link.action action="new" controller="Offer" arguments="{organization: organization}"><f:image src="EXT:sjr_offers/Resources/Public/Icons/new_record.gif" alt="new" />&nbsp;Neues Angebot</f:link.action></p>
+	</sjr:security.ifAuthenticated>
+
+	<table class="tx-sjroffers-table contenttable" border="0" width="100%">
+		<tr>
+			<td><strong>Angebotszeitraum</strong></td>
+			<td><strong>Angebot</strong></td>
+			<td><strong>Alter</strong></td>
+			<td><strong>Kategorien</strong></td>
+		</tr>
+		<f:if condition="{offers}">
+			<f:then>
+				<f:for each="{offers}" as="offer">
+					<tr>
+						<td valign="top" width="30%">
+							{offer.dateRange->sjr:format.dateRange()}
+						</td>
+						<td valign="top" width="70%">
+							<f:link.action action="show" controller="Offer" arguments="{offer : offer}"><strong>{offer.title}</strong></f:link.action>
+							<sjr:security.ifAuthenticated person="{organization.administrator}">
+									<f:link.action controller="Offer" action="edit" arguments="{offer : offer}"><f:image src="EXT:sjr_offers/Resources/Public/Icons/edit.gif" alt="edit" /></f:link.action>
+									<f:link.action controller="Organization" action="removeOffer" arguments="{offer : offer}" additionalAttributes="{onclick : 'return confirm(\'Alle Daten des Angebots werden gelöscht\nSind Sie sicher?\')'}"><f:image src="EXT:sjr_offers/Resources/Public/Icons/recycler.gif" alt="delete" /></f:link.action>
+							</sjr:security.ifAuthenticated>
+							<br />
+							<f:if condition="{offer.teaser}">
+								<f:then>
+									{offer.teaser}
+								</f:then>
+								<f:else>
+									<f:format.crop maxCharacters="50">{offer.description}</f:format.crop>
+								</f:else>
+							</f:if>
+						</td>
+						<td valign="top">
+							{offer.ageRange->sjr:format.numericRange()}
+						</td>
+						<td valign="top">
+							<f:if condition="{offer.categories}">
+								<f:then>
+									<ul>
+										<f:for each="{offer.categories}" as="category">
+											<f:if condition="{category.isInternal} == 0">
+											<li>{category.title}</li>
+											</f:if>
+										</f:for>
+									</ul>
+								</f:then>
+								<f:else>
+									&nbsp;
+								</f:else>
+							</f:if>
+						</td>
+					</tr>
+				</f:for>
+			</f:then>
+			<f:else>
+				<tr>
+					<td colspan="5">Zur Zeit leider keine Angebote.</td>
+				</tr>
+			</f:else>
+		</f:if>
+	</table>
+	
+	<sjr:security.ifAuthenticated person="{organization.administrator}">
+		<p><f:link.action action="new" controller="Offer" arguments="{organization: organization}"><f:image src="EXT:sjr_offers/Resources/Public/Icons/new_record.gif" alt="new" />&nbsp;Neues Angebot</f:link.action></p>
+	</sjr:security.ifAuthenticated>
+
+</f:section>

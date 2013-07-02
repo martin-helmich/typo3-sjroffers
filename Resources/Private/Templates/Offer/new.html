@@ -1,0 +1,45 @@
+{namespace sjr=Tx_SjrOffers_ViewHelpers}
+<f:section name="content">
+	<sjr:security.ifAuthenticated person="{organization.administrator}">
+		<f:then>
+			<f:render partial="formErrors" arguments="{formName: 'newOffer'}" />
+			<f:form class="tx-sjroffers-form" method="post" controller="Offer" action="create" name="newOffer" object="{newOffer}" arguments="{organization : organization}">
+				<label for="title">Titel</label>
+				<f:form.textbox id="title" property="title" size="46" /><br />
+				<label for="teaser">Kurzer Anreißertext (max 2zeilig)</label>
+				<f:form.textarea id="teaser" property="teaser" rows="2" cols="46" /><br />
+				<label for="description">Beschreibung</label>
+				<f:form.textarea id="description" property="description" rows="10" cols="46" /><br />
+				<label for="services">Leistungen</label>
+				<f:form.textarea id="services" property="services" rows="6" cols="46" /><br />
+				<label for="dates">Datum der Veranstaltung<br />(z.B. "Mo und Fr, jeweils 8-12 Uhr")</label>
+				<f:form.textarea id="dates" property="dates" rows="5" cols="46" /><br />
+				<label for="startdate">Angebotszeitraum</label>
+				vom&nbsp;<f:form.textbox id="startdate" class="datepicker" property="dateRange.minimumValue" value="{f:format.date(date: offer.dateRange.minimumValue, format: 'd.m.Y')}" size="12" />&nbsp;bis&nbsp;zum&nbsp;<f:form.textbox id="enddate" class="datepicker" property="dateRange.maximumValue" value="{f:format.date(date: offer.dateRange.maximumValue, format: 'd.m.Y')}" size="12" /><br />
+				<label for="venue">Veranstaltungsort<br />(z.B. "Gemeindehaus, 2. Stock")</label>
+				<f:form.textarea id="venue" property="venue" rows="5" cols="46" /><br />
+				<label for="ageRange">Altersbereich</label>
+				von&nbsp;<f:form.textbox id="ageRange" property="ageRange.minimumValue" value="{offer.ageRange.minimumValue}" size="4" />&nbsp;bis&nbsp;<f:form.textbox property="ageRange.maximumValue" value="{offer.ageRange.maximumValue}" size="4" />&nbsp;Jahre<br />
+				<label for="attendanceRange">Teilnehmerzahl</label>
+				min.&nbsp;<f:form.textbox id="attendanceRange" property="attendanceRange.minimumValue" value="{offer.attendanceRange.minimumValue}" size="4" />&nbsp;max.&nbsp;<f:form.textbox property="attendanceRange.maximumValue" value="{offer.attendanceRange.maximumValue}" size="4" />&nbsp;Teilnehmer<br />
+
+				<label for="attendanceFees">Teilnahmebeitrag</label>
+				<div id="attendanceFeeContainer">
+					<div class="singleAttendanceFee"><input size="6" type="text" name="tx_sjroffers_list[attendanceFees][amount][]" value="" />&nbsp;&euro;&nbsp;&nbsp;gültig&nbsp;für&nbsp;<input size="16" type="text" name="tx_sjroffers_list[attendanceFees][comment][]" value="" /><button class="removeAttendanceFee">löschen</button><br /></div>
+				</div>	
+				<button id="addAttendanceFee">Weiteren Preis hinzufügen</button>
+				<br />
+				
+				<label for="categories">Kategorien <a href="#" onclick="document.newOffer['categories'].selectedIndex=-1; return false;">(alles abwählen)</a></label>
+				<f:form.select id="categories" property="categories" options="{organization.status.allowedCategories}" optionValueField="uid" multiple="multiple" size="5" style="width: 20em;"><select><option>###dummy###</option></select></f:form.select><br />
+				<label for="regions">Stadtteile <a href="#" onclick="document.newOffer['regions'].selectedIndex=-1; return false;">(alles abwählen)</a></label>
+				<f:form.select id="regions" property="regions" options="{regions}" optionValueField="uid" multiple="multiple" selectAll="true" size="20" style="width: 20em;"><select><option>###dummy###</option></select></f:form.select><br />
+
+				<f:form.submit value="Speichern"/>
+			</f:form>
+		</f:then>
+		<f:else>
+			<f:render partial="accessError" />
+		</f:else>
+	</sjr:security.ifAuthenticated>
+</f:section>

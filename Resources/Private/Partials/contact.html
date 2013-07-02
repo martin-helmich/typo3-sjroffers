@@ -1,0 +1,6 @@
+<f:if condition="{contact.name}">{contact.name}</f:if><f:if condition="{contact.role}"> ({contact.role})</f:if>
+<f:if condition="{contact.address}"><br /><f:format.nl2br>{contact.address}</f:format.nl2br></f:if>
+<f:if condition="{contact.telephoneNumber}"><br />Telefon:&nbsp;{contact.telephoneNumber}</f:if>
+<f:if condition="{contact.telefaxNumber}"><br />Fax:&nbsp;{contact.telefaxNumber}</f:if>
+<f:if condition="{contact.emailAddress}"><br />Email:&nbsp;<a href="mailto:{contact.emailAddress}">{contact.emailAddress}</a></f:if>
+<f:if condition="{contact.url}"><br />Web:&nbsp;<a href="{contact.url}">{contact.url}</a></f:if>

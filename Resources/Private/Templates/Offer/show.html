@@ -1,0 +1,156 @@
+{namespace sjr=Tx_SjrOffers_ViewHelpers}
+<f:layout name="default" />
+<f:section name="content">
+
+	<h2><f:link.action action="show" controller="Organization" arguments="{organization : offer.organization}">{offer.organization.name}</f:link.action></h2>
+	
+	<h3>
+		{offer.title}
+		<sjr:security.ifAuthenticated person="{organization.administrator}">
+			<f:link.action controller="Offer" action="edit" arguments="{offer : offer, organization : organization}"><f:image src="EXT:sjr_offers/Resources/Public/Icons/edit.gif" alt="edit" /></f:link.action>
+			<f:link.action controller="Organization" action="removeOffer" arguments="{offer : offer}" additionalAttributes="{onclick : 'return confirm(\'Alle Daten des Angebots werden gelöscht\nSind Sie sicher?\')'}"><f:image src="EXT:sjr_offers/Resources/Public/Icons/recycler.gif" alt="delete" /></f:link.action>	
+		</sjr:security.ifAuthenticated>
+	</h3>
+			
+	<p><f:format.nl2br>{offer.description}</f:format.nl2br></p>
+	
+	<h4>Alle Infos auf einen Blick</h4>
+	
+	<table class="tx-sjroffers-table contenttable" border="0">
+		<f:if condition="{offer.dates}">
+		<tr>
+			<td valign="top" class="tx-sjroffers-column0">Termin</td>
+			<td valign="top">
+				<f:format.nl2br>{offer.dates}</f:format.nl2br>
+			</td>
+		</tr>
+		</f:if>
+		<f:if condition="{offer.venue}">
+		<tr>
+			<td valign="top" class="tx-sjroffers-column0">Veranstaltungsort</td>
+			<td valign="top">
+				<f:format.nl2br>{offer.venue}</f:format.nl2br>
+			</td>
+		</tr>
+		</f:if>
+		<f:if condition="{offer.ageRange}">
+		<tr>
+			<td valign="top" class="tx-sjroffers-column0">Alter</td>
+			<td valign="top"><sjr:format.numericRange>{offer.ageRange}</sjr:format.numericRange></td>
+		</tr>
+		</f:if>
+		<f:if condition="{offer.attendanceFees}">
+		<tr>
+			<td valign="top" class="tx-sjroffers-column0">Teilnahmebeitrag</td>
+			<td valign="top">
+				<f:for each="{offer.attendanceFees}" as="attendanceFee">
+					<f:format.currency currencySign="€">{attendanceFee.amount}</f:format.currency>
+					<f:if condition="{attendanceFee.comment}">
+						({attendanceFee.comment})<br />
+					</f:if>
+				</f:for>
+			</td>
+		</tr>
+		</f:if>
+		<f:if condition="{offer.services}">
+		<tr>
+			<td valign="top" class="tx-sjroffers-column0">Leistungen</td>
+			<td valign="top">
+				<sjr:format.nl2li>{offer.services}</sjr:format.nl2li>
+			</td>
+		</tr>
+		</f:if>
+		<f:if condition="{offer.attendanceRange}">
+		<tr>
+			<td valign="top" class="tx-sjroffers-column0">Teilnehmerzahl</td>
+			<td valign="top">
+				<sjr:format.numericRange>{offer.attendanceRange}</sjr:format.numericRange>
+			</td>
+		</tr>
+		</f:if>
+		<f:if condition="{offer.categories}">
+		<tr>
+			<td valign="top" class="tx-sjroffers-column0">Kategorien</td>
+			<td valign="top">
+				<ul>
+					<f:for each="{offer.categories}" as="category">
+						<f:if condition="{category.isInternal} == 0">
+						<li>{category.title}</li>
+						</f:if>
+					</f:for>
+				</ul>
+			</td>
+		</tr>
+		</f:if>
+		<tr>
+			<td valign="top" class="tx-sjroffers-column0">Ansprechpartner</td>
+			<td valign="top">
+				<f:if condition="{offer.contact}">
+					<f:then>
+					<p>
+						<sjr:security.ifAuthenticated person="{organization.administrator}">
+							<a href="#" id="toggleButton"><f:image src="EXT:sjr_offers/Resources/Public/Icons/edit.gif" alt="edit" /></a>
+							<f:link.action controller="Offer" action="removeContact" arguments="{contact : offer.contact, offer : offer}" additionalAttributes="{onclick : 'return confirm(\'Der Ansprechpartner wird von diesem Angebot entfernt. Er steht für andere Angebote weiterhin als Ansprechpartner zur Verfügung.\')'}"><f:image src="EXT:sjr_offers/Resources/Public/Icons/recycler.gif" alt="delete" /></f:link.action>
+						</sjr:security.ifAuthenticated>	
+						<f:render partial="contact" arguments="{contact : offer.contact}" />
+						<sjr:security.ifAuthenticated person="{organization.administrator}">
+							<f:render partial="formErrors" arguments="{formName: 'contact'}" />
+							<f:form class="tx-sjroffers-form" id="toggleForm" style="display: none;" method="post" action="updateContact" controller="Offer" name="contact" object="{offer.contact}" arguments="{offer: offer}">
+								<label for="name">Name</label>
+								<f:form.textbox property="name" size="46" /><br />
+								<label for="role">Zuständigkeit, Aufgabengebiet</label>
+								<f:form.textbox property="role" size="46" /><br />
+								<label for="address">Adresse</label>
+								<f:form.textarea property="address" rows="6" cols="46" /><br />
+								<label for="telephoneNumber">Telefon</label>
+								<f:form.textbox property="telephoneNumber" size="46" /><br />
+								<label for="telefaxNumber">Telefax</label>
+								<f:form.textbox property="telefaxNumber" size="46" /><br />
+								<label for="emailAddress">E-Mail</label>
+								<f:form.textbox property="emailAddress" size="46" /><br />
+								<label for="url">Homepage</label>
+								<f:form.textbox property="url" size="46" /><br />
+								<f:form.submit value="Änderungen speichern"/>
+							</f:form>
+						</sjr:security.ifAuthenticated>
+					</p>
+					</f:then>
+					<f:else>
+						<sjr:security.ifAuthenticated person="{organization.administrator}">
+							<a href="#" id="toggleButton"><f:image src="EXT:sjr_offers/Resources/Public/Icons/new_record.gif" alt="new" />&nbsp;Ansprechpartner hinzufügen</a>
+							<div id="toggleForm" style="display: none;">
+								<h4>Verfügbaren Kontakt hinzufügen:</h4>
+								<f:form class="tx-sjroffers-form" method="post" controller="Offer" action="setContact" name="offer" object="{offer}">
+									<f:form.select property="contact" options="{contacts}" optionLabelField="name" style="width: 20em;"><select><option>###dummy###</option></select></f:form.select>
+									<f:form.submit value="hinzufügen"/>
+								</f:form>
+
+								<h4>Neuen Kontakt anlegen:</h4>
+								<f:form class="tx-sjroffers-form" method="post" controller="Offer" action="createContact" name="newContact" object="{newContact}" arguments="{offer: offer}">
+									<f:render partial="formErrors" arguments="{formName: 'createContact'}" />
+									<label for="name">Name</label>
+									<f:form.textbox property="name" size="46" /><br />
+									<label for="role">Zuständigkeit, Aufgabengebiet</label>
+									<f:form.textbox property="role" size="46" /><br />
+									<label for="address">Adresse</label>
+									<f:form.textarea property="address" rows="6" cols="46" /><br />
+									<label for="telephoneNumber">Telefon</label>
+									<f:form.textbox property="telephoneNumber" size="46" /><br />
+									<label for="telefaxNumber">Telefax</label>
+									<f:form.textbox property="telefaxNumber" size="46" /><br />
+									<label for="emailAddress">E-Mail</label>
+									<f:form.textbox property="emailAddress" size="46" /><br />
+									<label for="url">Homepage</label>
+									<f:form.textbox property="url" size="46" /><br />
+									<f:form.submit value="Kontakt anlegen"/>
+								</f:form>
+							</div>
+						</sjr:security.ifAuthenticated>
+					</f:else>
+				</f:if>
+
+			</td>
+		</tr>
+	</table>
+
+</f:section>
