@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,13 +27,13 @@
 /**
  * Testcase for the AttendanceFee class
  */
-class Tx_SjrOffers_Domain_Model_AttendanceFeeTest extends Tx_Extbase_BaseTestCase {
+class AttendanceFeeTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * @test
 	 */
 	public function anInstanceOfTheAttendanceFeeCanBeConstructed() {
-	    $offer = new Tx_SjrOffers_Domain_Model_AttendanceFee('1,56');
+		$offer = new \Sjr\SjrOffers\Domain\Model\AttendanceFee('1,56');
 		$this->assertEquals('1.56', $offer->getAmount());
 	}
 	
@@ -47,15 +49,15 @@ class Tx_SjrOffers_Domain_Model_AttendanceFeeTest extends Tx_Extbase_BaseTestCas
 			array('28972', '28,972.00'),
 			array('2', '2.00'),
 			array('123.456.789,12345', '123,456,789.12'),
-			);
+		);
 	}
 	
 	/**
 	 * @test
 	 * @dataProvider providerForAmounts
 	 */
-	public function amountsAreNormalizedToEnglishNumberFromat($inputAmount, $normalizedAmount) {
-	    $offer = $this->getMock($this->buildAccessibleProxy('Tx_SjrOffers_Domain_Model_AttendanceFee'), array('dummy'), array($inputAmount));
+	public function amountsAreNormalizedToEnglishNumberFormat($inputAmount, $normalizedAmount) {
+		$offer = $this->getMock($this->buildAccessibleProxy('\\Sjr\\SjrOffers\\Domain\\Model\\AttendanceFee'), array('dummy'), array($inputAmount));
 		$this->assertEquals($normalizedAmount, $offer->_call('normalizeAmount', $inputAmount));
 	}
 	

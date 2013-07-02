@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * An abstract range constraint
  */
-abstract class Tx_SjrOffers_Domain_Model_RangeConstraint extends Tx_Extbase_DomainObject_AbstractValueObject {
+abstract class RangeConstraint extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 
 	/**
 	 * @var int The minimum value

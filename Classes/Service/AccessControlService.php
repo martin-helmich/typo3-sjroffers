@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Service;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -28,7 +30,7 @@
  * @version $Id:$
  * @license http://opensource.org/licenses/gpl-license.php GNU protected License, version 2
  */
-class Tx_SjrOffers_Service_AccessControlService implements t3lib_Singleton {
+class AccessControlService implements \TYPO3\CMS\Core\SingletonInterface {
 
 	/**
 	 * Tests, if the given person is logged into the frontend
@@ -37,7 +39,7 @@ class Tx_SjrOffers_Service_AccessControlService implements t3lib_Singleton {
 	 * @return bool The result; TRUE if the given person is logged in; otherwise FALSE
 	 */
 	public function isLoggedIn($person = NULL) {
-		if ($person instanceof Tx_Extbase_Persistence_LazyLoadingProxy) {
+		if ($person instanceof \TYPO3\CMS\Extbase\Persistence\LazyLoadingProxy) {
 			$person->_loadRealInstance();
 		}
 		if (is_object($person)) {

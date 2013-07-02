@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,13 +27,13 @@
 /**
  * Testcase for the Region class
  */
-class Tx_SjrOffers_Domain_Model_RegionTest extends Tx_Extbase_BaseTestCase {
+class RegionTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * @test
 	 */
 	public function anInstanceOfTheRegionCanBeConstructed() {
-	    $region = new Tx_SjrOffers_Domain_Model_Region('The Region');
+	    $region = new \Sjr\SjrOffers\Domain\Model\Region('The Region');
 		$this->assertEquals('The Region', $region->getName());
 	}
 
@@ -39,7 +41,7 @@ class Tx_SjrOffers_Domain_Model_RegionTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theNameOfTheRegionCanBeSet() {
-	    $region = new Tx_SjrOffers_Domain_Model_Region('The Region');
+	    $region = new \Sjr\SjrOffers\Domain\Model\Region('The Region');
 		$name = 'Another name';
 		$region->setName($name);
 		$this->assertEquals($name, $region->getName());
@@ -49,7 +51,7 @@ class Tx_SjrOffers_Domain_Model_RegionTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theRegionCanBeConvertedToString() {
-	    $region = new Tx_SjrOffers_Domain_Model_Region('The Region');
+	    $region = new \Sjr\SjrOffers\Domain\Model\Region('The Region');
 		$this->assertEquals('The Region', $region->__toString());
 	}
 	

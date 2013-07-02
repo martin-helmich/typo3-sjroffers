@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\ViewHelpers\Format;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,20 +27,20 @@
 /**
  * View helper for rendering contraints.
  */
-class Tx_SjrOffers_ViewHelpers_Format_DateRangeViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class DateRangeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * Render the supplied range as formatted string
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_DateRangeInterface $range The date range
+	 * @param \Sjr\SjrOffers\Domain\Model\DateRangeInterface $range The date range
 	 * @return string Formatted range
 	 */
-	public function render(Tx_SjrOffers_Domain_Model_DateRangeInterface $range = NULL) {
+	public function render(\Sjr\SjrOffers\Domain\Model\DateRangeInterface $range = NULL) {
 		$output = '';
 		if ($range === NULL) {
 			$range = $this->renderChildren();
 		}
-		if ($range instanceof Tx_SjrOffers_Domain_Model_DateRangeInterface) {
+		if ($range instanceof \Sjr\SjrOffers\Domain\Model\DateRangeInterface) {
 			$minimumValue = $range->getMinimumValue();
 			if ($minimumValue instanceof DateTime) {
 				$plainMinimumValue = $minimumValue->format('U');

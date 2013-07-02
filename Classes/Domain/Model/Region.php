@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * A Region
  */
-class Tx_SjrOffers_Domain_Model_Region extends Tx_Extbase_DomainObject_AbstractValueObject {
+class Region extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	
 	/**
 	 * @var string The name of the region

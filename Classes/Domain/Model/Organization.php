@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,10 +27,10 @@
 /**
  * An Organization
  */
-class Tx_SjrOffers_Domain_Model_Organization extends Tx_Extbase_DomainObject_AbstractEntity {
+class Organization extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_Status The status of the organization
+	 * @var \Sjr\SjrOffers\Domain\Model\Status The status of the organization
 	 **/
 	protected $status;
 
@@ -73,44 +75,44 @@ class Tx_SjrOffers_Domain_Model_Organization extends Tx_Extbase_DomainObject_Abs
 	protected $image;
 	
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Person> The contacts of the organization
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Person> The contacts of the organization
 	 * @lazy
 	 **/
 	protected $contacts;
 	
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Offer> The offers the organization has to offer
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Offer> The offers the organization has to offer
 	 * @lazy
 	 * @cascade remove
 	 **/
 	protected $offers;
 	
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_Administrator The administrator of the organization.
+	 * @var \Sjr\SjrOffers\Domain\Model\Administrator The administrator of the organization.
 	 * @lazy
 	 **/
 	protected $administrator;
 	
 	public function __construct($name) {
 	    $this->setName($name);
-	    $this->contacts = new Tx_Extbase_Persistence_ObjectStorage;
-	    $this->offers = new Tx_Extbase_Persistence_ObjectStorage;
+	    $this->contacts = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+	    $this->offers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 	}
 	
 	/**
 	 * Setter for status
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Status $status The status of the organization
+	 * @param \Sjr\SjrOffers\Domain\Model\Status $status The status of the organization
 	 * @return void
 	 */
-	public function setStatus(Tx_SjrOffers_Domain_Model_Status $status) {
+	public function setStatus(\Sjr\SjrOffers\Domain\Model\Status $status) {
 		$this->status = $status;
 	}
 
 	/**
 	 * Getter for status
 	 *
-	 * @return Tx_SjrOffers_Domain_Model_Status $status The status of the organization
+	 * @return \Sjr\SjrOffers\Domain\Model\Status $status The status of the organization
 	 */
 	public function getStatus() {
 		return $this->status;
@@ -271,17 +273,17 @@ class Tx_SjrOffers_Domain_Model_Organization extends Tx_Extbase_DomainObject_Abs
 	/**
 	 * Sets the contacts of the organization
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage $contacts The contacts of the organization
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $contacts The contacts of the organization
 	 * @return void
 	 */
-	public function setContacts(Tx_Extbase_Persistence_ObjectStorage $contacts) {
+	public function setContacts(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $contacts) {
 		$this->contacts = $contacts;
 	}
 
 	/**
 	 * Returns the contacts of the organization
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Person> The contacts of the organization
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Person> The contacts of the organization
 	 */
 	public function getContacts() {
 		return clone $this->contacts;
@@ -290,7 +292,7 @@ class Tx_SjrOffers_Domain_Model_Organization extends Tx_Extbase_DomainObject_Abs
 	/**
 	 * Returns the contacts of the organization and all related offers.
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Person> The contacts of the organization
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Person> The contacts of the organization
 	 */
 	public function getAllContacts() {
 		$contacts = $this->getContacts();
@@ -306,36 +308,36 @@ class Tx_SjrOffers_Domain_Model_Organization extends Tx_Extbase_DomainObject_Abs
 	/**
 	 * Adds a contact to the organization
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Person The contact to be added
+	 * @param \Sjr\SjrOffers\Domain\Model\Person The contact to be added
 	 * @return void
 	 */
-	public function addContact(Tx_SjrOffers_Domain_Model_Person $contact) {
+	public function addContact(\Sjr\SjrOffers\Domain\Model\Person $contact) {
 		$this->contacts->attach($contact);
 	}
 
 	/**
 	 * Remove a contact from the organization
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Person The contact to be removed
+	 * @param \Sjr\SjrOffers\Domain\Model\Person The contact to be removed
 	 * @return void
 	 */
-	public function removeContact(Tx_SjrOffers_Domain_Model_Person $contact) {
+	public function removeContact(\Sjr\SjrOffers\Domain\Model\Person $contact) {
 		$this->contacts->detach($contact);
 	}
 
 	/**
 	 * Sets the offers of the organization
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Offer> The offers of the organization
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Offer> The offers of the organization
 	 */
-	public function setOffers(Tx_Extbase_Persistence_ObjectStorage $offers) {
+	public function setOffers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $offers) {
 		$this->offers = $offers;
 	}
 		
 	/**
 	 * Returns the offers of the organization
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Offer> The offers of the organization
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Offer> The offers of the organization
 	 */
 	public function getOffers() {
 		return clone $this->offers;
@@ -344,20 +346,20 @@ class Tx_SjrOffers_Domain_Model_Organization extends Tx_Extbase_DomainObject_Abs
 	/**
 	 * Adds an offer to the organization
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer The offer to be added
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer The offer to be added
 	 * @return void
 	 */
-	public function addOffer(Tx_SjrOffers_Domain_Model_Offer $offer) {
+	public function addOffer(\Sjr\SjrOffers\Domain\Model\Offer $offer) {
 		$this->offers->attach($offer);
 	}
 
 	/**
 	 * Remove an offer from the organization
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer The offer to be removed
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer The offer to be removed
 	 * @return void
 	 */
-	public function removeOffer(Tx_SjrOffers_Domain_Model_Offer $offer) {
+	public function removeOffer(\Sjr\SjrOffers\Domain\Model\Offer $offer) {
 		$this->offers->detach($offer);
 	}
 
@@ -367,16 +369,16 @@ class Tx_SjrOffers_Domain_Model_Organization extends Tx_Extbase_DomainObject_Abs
 	 * @return void
 	 */
 	public function removeAllOffers() {
-		$this->offers = new Tx_Extbase_Persistence_ObjectStorage();
+		$this->offers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 	
 	/**
 	 * Returns the administrator of the organization
 	 * 
-	 * @return  Tx_SjrOffers_Domain_Model_Administrator The administrator of the organization
+	 * @return  \Sjr\SjrOffers\Domain\Model\Administrator The administrator of the organization
 	 */
 	public function getAdministrator() {
-		if ($this->administrator instanceof Tx_Extbase_PErsistence_LazyLoadingProxy) {
+		if ($this->administrator instanceof \TYPO3\CMS\Extbase\Persistence\LazyLoadingProxy) {
 		  $this->administrator->_loadRealInstance();
 		}
 		return $this->administrator;

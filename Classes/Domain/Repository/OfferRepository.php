@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Repository;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,7 +27,7 @@
 /**
  * A repository for Offers
  */
-class Tx_SjrOffers_Domain_Repository_OfferRepository extends Tx_Extbase_Persistence_Repository {
+class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	
 	/**
 	 * Finds all offers that are offerd by the given organization
@@ -33,15 +35,15 @@ class Tx_SjrOffers_Domain_Repository_OfferRepository extends Tx_Extbase_Persiste
 	 * @param array $listCategories An array of categories the offer has to be assigned to
 	 * @return array Matched offers
 	 */
-	public function findForAdmin(Tx_SjrOffers_Domain_Model_Organization $organization, array $listCategories = array()) {
+	public function findForAdmin(\Sjr\SjrOffers\Domain\Model\Organization $organization, array $listCategories = array()) {
 		$query = $this->createQuery();
 		$query->matching(
 			$query->equals('organization', $organization)
 			);
 		$query->setOrderings(
 			array(
-				'dateRange.minimumValue' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-				'dateRange.maximumValue' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+				'dateRange.minimumValue' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+				'dateRange.maximumValue' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
 				)
 			);
 		return $query->execute();
@@ -50,13 +52,13 @@ class Tx_SjrOffers_Domain_Repository_OfferRepository extends Tx_Extbase_Persiste
 	/**
 	 * Finds all offers that meets the specified demand.
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Demand $demand 
+	 * @param \Sjr\SjrOffers\Domain\Model\Demand $demand 
 	 * @param array $propertiesToSearch A array of properties to be searched for occurrances of the search word
 	 * @param array $listCategories An array of categories the offer has to be assigned to
 	 * @param array $allowedStates An array of allowed states of the organization
 	 * @return array Matched offers
 	 */
-	public function findDemanded(Tx_SjrOffers_Domain_Model_Demand $demand = NULL, array $propertiesToSearch = array(), array $listCategories = array(), array $allowedStates = array()) {
+	public function findDemanded(\Sjr\SjrOffers\Domain\Model\Demand $demand = NULL, array $propertiesToSearch = array(), array $listCategories = array(), array $allowedStates = array()) {
 		$query = $this->createQuery();
 		$constraints = array();
 		if ($demand !== NULL) {
@@ -104,8 +106,8 @@ class Tx_SjrOffers_Domain_Repository_OfferRepository extends Tx_Extbase_Persiste
 		}
 		$query->setOrderings(
 			array(
-				'dateRange.minimumValue' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-				'dateRange.maximumValue' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+				'dateRange.minimumValue' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+				'dateRange.maximumValue' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
 				)
 			);
 		

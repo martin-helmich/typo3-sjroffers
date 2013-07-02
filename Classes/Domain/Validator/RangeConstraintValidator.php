@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Validator;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -31,7 +33,7 @@
  * @package sjr_offers
  * @scope prototype
  */
-class Tx_SjrOffers_Domain_Validator_RangeConstraintValidator extends Tx_Extbase_Validation_Validator_AbstractValidator {
+class RangeConstraintValidator extends \TYPO3\CMS\Extbase\Validator\AbstractValidator\AbstractValidator {
 
 	/**
 	 * Checks if  the minimum value is not greater than the maximum value.
@@ -41,7 +43,7 @@ class Tx_SjrOffers_Domain_Validator_RangeConstraintValidator extends Tx_Extbase_
 	 */
 	public function isValid($value) {
 		$this->errors = array();
-		if ($value instanceof Tx_SjrOffers_Domain_Model_RangeConstraint) {
+		if ($value instanceof \Sjr\SjrOffers\Domain\Model\RangeConstraint) {
 			$minimumValue = $value->getMinimumValue();
 			$maximumValue = $value->getMaximumValue();
 			if ($maximumValue !== NULL && $minimumValue !== NULL) {

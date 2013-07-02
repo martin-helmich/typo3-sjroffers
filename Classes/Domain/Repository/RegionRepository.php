@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Repository;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,6 +27,6 @@
 /**
  * A repository for Regions
  */
-class Tx_SjrOffers_Domain_Repository_RegionRepository extends Tx_Extbase_Persistence_Repository {
+class RegionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 }
 ?>

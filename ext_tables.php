@@ -1,13 +1,13 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-Tx_Extbase_Utility_Extension::registerPlugin($_EXTKEY, 'List', 'A List of Offers');
-Tx_Extbase_Utility_Extension::registerPlugin($_EXTKEY, 'Organizations', 'A List of Organizations');
-Tx_Extbase_Utility_Extension::registerPlugin($_EXTKEY, 'Admin', 'FE-Admin Plugin');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin($_EXTKEY, 'List', 'A List of Offers');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin($_EXTKEY, 'Organizations', 'A List of Organizations');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin($_EXTKEY, 'Admin', 'FE-Admin Plugin');
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Basic Configuration');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Basic Configuration');
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_domain_model_organization');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_domain_model_organization');
 $TCA['tx_sjroffers_domain_model_organization'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_domain_model_organization',
@@ -21,12 +21,12 @@ $TCA['tx_sjroffers_domain_model_organization'] = array (
 		'enablecolumns' 	=> array(
 			'disabled' => 'hidden'
 			),
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile' 			=> t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_organization.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile' 			=> \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_organization.gif'
 	)
 );
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_domain_model_offer');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_domain_model_offer');
 $TCA['tx_sjroffers_domain_model_offer'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_domain_model_offer',
@@ -43,12 +43,12 @@ $TCA['tx_sjroffers_domain_model_offer'] = array (
 		'enablecolumns'     => array(
 			'disabled' => 'hidden'
 		),
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_offer.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_offer.gif'
 	)
 );
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_domain_model_person');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_domain_model_person');
 $TCA['tx_sjroffers_domain_model_person'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_domain_model_person',
@@ -59,60 +59,60 @@ $TCA['tx_sjroffers_domain_model_person'] = array (
 		'enablecolumns'     => array(
 			'disabled' => 'hidden'
 		),
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_person.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_person.gif'
 	)
 );
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_domain_model_agerange');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_domain_model_agerange');
 $TCA['tx_sjroffers_domain_model_agerange'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_domain_model_agerange',
 		'label'				=> 'minimum_value',
 		'label_alt'			=> 'maximum_value',
 		'label_alt_force'	=> TRUE,
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_rangeconstraint.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_rangeconstraint.gif'
 	)
 );
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_domain_model_daterange');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_domain_model_daterange');
 $TCA['tx_sjroffers_domain_model_daterange'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_domain_model_daterange',
 		'label'				=> 'minimum_value',
 		'label_alt'			=> 'maximum_value',
 		'label_alt_force'	=> TRUE,
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_rangeconstraint.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_rangeconstraint.gif'
 	)
 );
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_domain_model_attendancerange');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_domain_model_attendancerange');
 $TCA['tx_sjroffers_domain_model_attendancerange'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_domain_model_attendancerange',
 		'label'				=> 'minimum_value',
 		'label_alt'			=> 'maximum_value',
 		'label_alt_force'	=> TRUE,
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_rangeconstraint.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_rangeconstraint.gif'
 	)
 );
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_domain_model_attendancefee');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_domain_model_attendancefee');
 $TCA['tx_sjroffers_domain_model_attendancefee'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_domain_model_attendancefee',
 		'label'				=> 'amount',
 		'label_alt'			=> 'comment',
 		'label_alt_force'	=> TRUE,
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_attendancefee.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_attendancefee.gif'
 	)
 );
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_domain_model_category');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_domain_model_category');
 $TCA['tx_sjroffers_domain_model_category'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_domain_model_category',
@@ -129,12 +129,12 @@ $TCA['tx_sjroffers_domain_model_category'] = array (
 		'enablecolumns'     => array(
 			'disabled' => 'hidden'
 		),
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_category.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_category.gif'
 	)
 );
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_domain_model_status');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_domain_model_status');
 $TCA['tx_sjroffers_domain_model_status'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_domain_model_status',
@@ -151,12 +151,12 @@ $TCA['tx_sjroffers_domain_model_status'] = array (
 		'enablecolumns'     => array(
 			'disabled' => 'hidden'
 		),
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_status.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_status.gif'
 	)
 );
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_domain_model_region');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_domain_model_region');
 $TCA['tx_sjroffers_domain_model_region'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_domain_model_region',
@@ -173,20 +173,20 @@ $TCA['tx_sjroffers_domain_model_region'] = array (
 		'enablecolumns'     => array(
 			'disabled' => 'hidden'
 		),
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_region.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_tx_sjroffers_domain_model_region.gif'
 	)
 );
 
-t3lib_extMgm::allowTableOnStandardPages('tx_sjroffers_organization_person_mm');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_sjroffers_organization_person_mm');
 $TCA['tx_sjroffers_organization_person_mm'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:sjr_offers/Resources/Private/Language/locallang_db.xml:tx_sjroffers_organization_person_mm',
 		'label'				=> 'uid_local',
 		'label_alt'			=> 'uid_foreign',
 		'label_alt_force'	=> TRUE,
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_relation.gif'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/icon_relation.gif'
 	)
 );
 

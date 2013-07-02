@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Repository;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,6 +27,6 @@
 /**
  * A repository for Persons
  */
-class Tx_SjrOffers_Domain_Repository_PersonRepository extends Tx_Extbase_Persistence_Repository {
+class PersonRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 }
 ?>

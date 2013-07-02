@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Validator;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -31,7 +33,7 @@
  * @package sjr_offers
  * @scope prototype
  */
-class Tx_SjrOffers_Domain_Validator_OfferValidator extends Tx_Extbase_Validation_Validator_AbstractValidator {
+class OfferValidator extends \TYPO3\CMS\Extbase\Validator\AbstractValidator\AbstractValidator {
 
 	/**
 	 * Returns TRUE, if the given offer

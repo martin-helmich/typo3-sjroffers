@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\ViewHelpers\Security;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,7 +27,13 @@
 /**
  * View helper for checking access rights.
  */
-class Tx_SjrOffers_ViewHelpers_Security_IfAuthenticatedViewHelper extends Tx_Fluid_ViewHelpers_IfViewHelper {
+class IfAuthenticatedViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\IfViewHelper {
+
+	/**
+	 * @var \Sjr\SjrOffers\Service\AccessControlService
+	 * @inject
+	 */
+	protected $accessControlService;
 
 	/**
 	 * Checks, if the given frontend user has access to the given object
@@ -34,8 +42,7 @@ class Tx_SjrOffers_ViewHelpers_Security_IfAuthenticatedViewHelper extends Tx_Flu
 	 * @return string The output
 	 */
 	public function render($person = NULL) {
-		$accessControllService = t3lib_div::makeInstance('Tx_SjrOffers_Service_AccessControlService');
-		if ($accessControllService->isLoggedIn($person) || $accessControllService->backendAdminIsLoggedIn()) {
+		if ($this->accessControlService->isLoggedIn($person) || $this->accessControlService->backendAdminIsLoggedIn()) {
 			return $this->renderThenChild();
 		} else {
 			return $this->renderElseChild();

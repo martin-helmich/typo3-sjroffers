@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,13 +27,13 @@
 /**
  * Testcase for the Offer class
  */
-class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
+class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * @test
 	 */
 	public function anInstanceOfTheOfferCanBeConstructed() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer('A title of an offer');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer('A title of an offer');
 		$this->assertEquals('A title of an offer', $offer->getTitle());
 	}
 
@@ -39,7 +41,7 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theTitleOfTheOfferCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer('A title of an offer');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer('A title of an offer');
 		$title = 'Another Name';
 		$offer->setTitle($title);
 		$this->assertEquals($title, $offer->getTitle());
@@ -49,7 +51,7 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theTeaserOfTheOfferCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer('A title of an offer');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer('A title of an offer');
 		$teaser = 'Lorem ipsum dolor sit amet';
 		$offer->setTeaser($teaser);
 		$this->assertEquals($teaser, $offer->getTeaser());
@@ -59,7 +61,7 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theDescriptionOfTheOfferCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.\nUt enim ad minim veniam, quis nostrud.";
 		$offer->setDescription($description);
 		$this->assertEquals($description, $offer->getDescription());
@@ -69,7 +71,7 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theServicesOfTheOfferCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$services = "Lorem ipsum dolor sit amet\nConsectetur adipisicing elit\nUt enim ad minim veniam";
 		$offer->setServices($services);
 		$this->assertEquals($services, $offer->getServices());
@@ -79,7 +81,7 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theDatesOfTheOfferCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$dates = "Mo, Mi und Fr, jeweils 8-12 Uhr\nDo 7-14 Uhr";
 		$offer->setDates($dates);
 		$this->assertEquals($dates, $offer->getDates());
@@ -89,7 +91,7 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theVenueOfTheOfferCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$venue = "Südgemeindehaus\n2.Stock, Zi. 213";
 		$offer->setVenue($venue);
 		$this->assertEquals($venue, $offer->getVenue());
@@ -99,7 +101,7 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function anImageOfTheOfferCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$imageName = 'image.gif';
 		$offer->setImage($imageName);
 		$this->assertEquals($imageName, $offer->getImage());
@@ -109,8 +111,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theAgeRangeOfTheOfferCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockAgeRange = $this->getMock('Tx_SjrOffers_Domain_Model_AgeRange');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockAgeRange = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\AgeRange');
 		$offer->setAgeRange($mockAgeRange);
 		$this->assertEquals($mockAgeRange, $offer->getAgeRange());
 	}
@@ -119,8 +121,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theDateRangeOfTheOfferCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockDateRange = $this->getMock('Tx_SjrOffers_Domain_Model_DateRange');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockDateRange = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\DateRange');
 		$offer->setDateRange($mockDateRange);
 		$this->assertEquals($mockDateRange, $offer->getDateRange());
 	}
@@ -129,8 +131,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theAttendanceRangeOfTheOfferCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockAttendanceRange = $this->getMock('Tx_SjrOffers_Domain_Model_AttendanceRange');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockAttendanceRange = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\AttendanceRange');
 		$offer->setAttendanceRange($mockAttendanceRange);
 		$this->assertEquals($mockAttendanceRange, $offer->getAttendanceRange());
 	}
@@ -139,8 +141,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theAttendanceFeesIsInitializedAsEmptyObjectStorage() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$this->assertEquals('Tx_Extbase_Persistence_ObjectStorage', get_class($offer->getAttendanceFees()));
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($offer->getAttendanceFees()));
 		$this->assertEquals(0, count($offer->getAttendanceFees()->toArray()));
 	}
 	
@@ -148,8 +150,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theAttendanceFeesCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockObjectStorage = $this->getMock('Tx_Extbase_Persistence_ObjectStorage', array('contains'), array(), '', FALSE);
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockObjectStorage = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('contains'), array(), '', FALSE);
 		$mockObjectStorage->expects($this->any())->method('contains')->with('foo')->will($this->returnValue(TRUE));		
 		$offer->setAttendanceFees($mockObjectStorage);
 		$this->assertTrue($offer->getAttendanceFees()->contains('foo'));
@@ -159,8 +161,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function anAttendanceFeeCanBeAdded() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockAttendanceFee = $this->getMock('Tx_SjrOffers_Domain_Model_AttendanceFee');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockAttendanceFee = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\AttendanceFee');
 		$offer->addAttendanceFee($mockAttendanceFee);
 		$this->assertTrue($offer->getAttendanceFees()->contains($mockAttendanceFee));
 	}
@@ -169,8 +171,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function anAttendanceFeeCanBeRemoved() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockAttendanceFee = $this->getMock('Tx_SjrOffers_Domain_Model_AttendanceFee');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockAttendanceFee = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\AttendanceFee');
 		$offer->addAttendanceFee($mockAttendanceFee);
 		$this->assertEquals(1, count($offer->getAttendanceFees()->toArray()));
 		$offer->removeAttendanceFee($mockAttendanceFee);
@@ -181,8 +183,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theContactCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockContact = $this->getMock('Tx_SjrOffers_Domain_Model_Person');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockContact = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Person');
 		$offer->setContact($mockContact);
 		$this->assertTrue($mockContact === $offer->getContact());
 	}
@@ -191,8 +193,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theCategoriesAreInitializedAsEmptyObjectStorage() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$this->assertEquals('Tx_Extbase_Persistence_ObjectStorage', get_class($offer->getCategories()));
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($offer->getCategories()));
 		$this->assertEquals(0, count($offer->getCategories()->toArray()));
 	}
 	
@@ -200,8 +202,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theCategoriesCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockObjectStorage = $this->getMock('Tx_Extbase_Persistence_ObjectStorage', array('contains'), array(), '', FALSE);
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockObjectStorage = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('contains'), array(), '', FALSE);
 		$mockObjectStorage->expects($this->any())->method('contains')->with('foo')->will($this->returnValue(TRUE));		
 		$offer->setCategories($mockObjectStorage);
 		$this->assertTrue($offer->getCategories()->contains('foo'));
@@ -211,8 +213,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function aCategoryCanBeAdded() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockCategory = $this->getMock('Tx_SjrOffers_Domain_Model_Category');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockCategory = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Category');
 		$offer->addCategory($mockCategory);
 		$this->assertTrue($offer->getCategories()->contains($mockCategory));
 	}
@@ -221,8 +223,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function aCategoryCanBeRemoved() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockCategory = $this->getMock('Tx_SjrOffers_Domain_Model_Category');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockCategory = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Category');
 		$offer->addCategory($mockCategory);
 		$this->assertEquals(1, count($offer->getCategories()->toArray()));
 		$offer->removeCategory($mockCategory);
@@ -233,8 +235,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theRegionsAreInitializedAsEmptyObjectStorage() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$this->assertEquals('Tx_Extbase_Persistence_ObjectStorage', get_class($offer->getRegions()));
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($offer->getRegions()));
 		$this->assertEquals(0, count($offer->getRegions()->toArray()));
 	}
 		
@@ -242,8 +244,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theRegionsCanBeSet() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockObjectStorage = $this->getMock('Tx_Extbase_Persistence_ObjectStorage', array('contains'), array(), '', FALSE);
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockObjectStorage = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('contains'), array(), '', FALSE);
 		$mockObjectStorage->expects($this->any())->method('contains')->with('foo')->will($this->returnValue(TRUE));		
 		$offer->setRegions($mockObjectStorage);
 		$this->assertTrue($offer->getRegions()->contains('foo'));
@@ -253,8 +255,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function aRegionCanBeAdded() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockRegion = $this->getMock('Tx_SjrOffers_Domain_Model_Region');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockRegion = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Region');
 		$offer->addRegion($mockRegion);
 		$this->assertTrue($offer->getRegions()->contains($mockRegion));
 	}
@@ -263,8 +265,8 @@ class Tx_SjrOffers_Domain_Model_OfferTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function aRegionCanBeRemoved() {
-	    $offer = new Tx_SjrOffers_Domain_Model_Offer;
-		$mockRegion = $this->getMock('Tx_SjrOffers_Domain_Model_Region');
+	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$mockRegion = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Region');
 		$offer->addRegion($mockRegion);
 		$this->assertEquals(1, count($offer->getRegions()->toArray()));
 		$offer->removeRegion($mockRegion);

@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,14 +27,14 @@
 /**
  * Testcase for the Demand class
  */
-class Tx_SjrOffers_Domain_Model_DemandTest extends Tx_Extbase_BaseTestCase {
+class DemandTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * @test
 	 */
 	public function theOrganizationCanBeSet() {
-	    $demand = new Tx_SjrOffers_Domain_Model_Demand;
-		$mockOrganization = $this->getMock('Tx_SjrOffers_Domain_Model_Organization');
+		$demand = new \Sjr\SjrOffers\Domain\Model\Demand;
+		$mockOrganization = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Organization');
 		$demand->setOrganization($mockOrganization);
 		$this->assertTrue($demand->getOrganization() === $mockOrganization);
 	}
@@ -41,7 +43,7 @@ class Tx_SjrOffers_Domain_Model_DemandTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theSearchWordCanBeSet() {
-	    $demand = new Tx_SjrOffers_Domain_Model_Demand;
+		$demand = new \Sjr\SjrOffers\Domain\Model\Demand;
 		$demand->setSearchWord('word');
 		$this->assertEquals('word', $demand->getSearchWord());
 	}
@@ -50,7 +52,7 @@ class Tx_SjrOffers_Domain_Model_DemandTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theAgeCriteriaCanBeSet() {
-	    $demand = new Tx_SjrOffers_Domain_Model_Demand;
+		$demand = new \Sjr\SjrOffers\Domain\Model\Demand;
 		$demand->setAge(2);
 		$this->assertEquals(2, $demand->getAge());
 	}
@@ -59,8 +61,8 @@ class Tx_SjrOffers_Domain_Model_DemandTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theCategoryCanBeSet() {
-	    $demand = new Tx_SjrOffers_Domain_Model_Demand;
-		$mockCategory = $this->getMock('Tx_SjrOffers_Domain_Model_Category');
+		$demand = new \Sjr\SjrOffers\Domain\Model\Demand;
+		$mockCategory = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Category');
 		$demand->setCategory($mockCategory);
 		$this->assertTrue($demand->getCategory() === $mockCategory);
 	}
@@ -69,8 +71,8 @@ class Tx_SjrOffers_Domain_Model_DemandTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theRegionCanBeSet() {
-	    $demand = new Tx_SjrOffers_Domain_Model_Demand;
-		$mockRegion = $this->getMock('Tx_SjrOffers_Domain_Model_Region');
+		$demand = new \Sjr\SjrOffers\Domain\Model\Demand;
+		$mockRegion = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Region');
 		$demand->setRegion($mockRegion);
 		$this->assertTrue($demand->getRegion() === $mockRegion);
 	}

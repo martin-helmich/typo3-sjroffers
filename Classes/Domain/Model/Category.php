@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * A Category
  */
-class Tx_SjrOffers_Domain_Model_Category extends Tx_Extbase_DomainObject_AbstractEntity {
+class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	
 	/**
 	 * @var string The title of the category

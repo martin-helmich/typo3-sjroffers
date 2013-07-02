@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,10 +27,10 @@
 /**
  * An Offer
  */
-class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEntity {
+class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_Organization The organization the offer belogs to
+	 * @var \Sjr\SjrOffers\Domain\Model\Organization The organization the offer belogs to
 	 **/
 	protected $organization;
 	
@@ -74,42 +76,42 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	protected $venue;
 	
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_AgeRange The age range of the offer.
-	 * @validate Tx_SjrOffers_Domain_Validator_RangeConstraintValidator
+	 * @var \Sjr\SjrOffers\Domain\Model\AgeRange The age range of the offer.
+	 * @validate \Sjr\SjrOffers\Domain\Validator\RangeConstraintValidator
 	 **/
 	protected $ageRange;
 	
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_DateRange The date range of the offer is valid.
-	 * @validate Tx_SjrOffers_Domain_Validator_RangeConstraintValidator
+	 * @var \Sjr\SjrOffers\Domain\Model\DateRange The date range of the offer is valid.
+	 * @validate \Sjr\SjrOffers\Domain\Validator\RangeConstraintValidator
 	 **/
 	protected $dateRange;
 
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_AttendanceRange The attendance range of the offer.
-	 * @validate Tx_SjrOffers_Domain_Validator_RangeConstraintValidator
+	 * @var \Sjr\SjrOffers\Domain\Model\AttendanceRange The attendance range of the offer.
+	 * @validate \Sjr\SjrOffers\Domain\Validator\RangeConstraintValidator
 	 **/
 	protected $attendanceRange;
 		
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_AttendanceFee> The attendance fees of the offer.
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\AttendanceFee> The attendance fees of the offer.
 	 * @lazy
 	 **/
 	protected $attendanceFees;
 		
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_Person The contact of the offer
+	 * @var \Sjr\SjrOffers\Domain\Model\Person The contact of the offer
 	 **/
 	protected $contact;
 	
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Category> The categories the offer is assigned to
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Category> The categories the offer is assigned to
 	 * @lazy
 	 **/
 	protected $categories;
 	
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Region> The regions the offer is available
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Region> The regions the offer is available
 	 * @lazy
 	 **/
 	protected $regions;
@@ -119,28 +121,28 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	 */
 	public function __construct($title) {
 		$this->setTitle($title);
-		$this->setAttendanceFees(new Tx_Extbase_Persistence_ObjectStorage);
-		$this->setCategories(new Tx_Extbase_Persistence_ObjectStorage);
-		$this->setRegions(new Tx_Extbase_Persistence_ObjectStorage);
+		$this->setAttendanceFees(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage);
+		$this->setCategories(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage);
+		$this->setRegions(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage);
 	}
 	
 	/**
 	 * Sets the organization of the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Organization The organization the offer belongs to
+	 * @param \Sjr\SjrOffers\Domain\Model\Organization The organization the offer belongs to
 	 * @return void
 	 */
-	public function setOrganization(Tx_SjrOffers_Domain_Model_Organization $organization = NULL) {
+	public function setOrganization(\Sjr\SjrOffers\Domain\Model\Organization $organization = NULL) {
 		$this->organization = $organization;
 	}
 
 	/**
 	 * Returns the organization of the offer
 	 * 
-	 * @return Tx_SjrOffers_Domain_Model_Organization The organization the offer belongs to
+	 * @return \Sjr\SjrOffers\Domain\Model\Organization The organization the offer belongs to
 	 */
 	public function getOrganization() {
-		if ($this->organization instanceof Tx_Extbase_PErsistence_LazyLoadingProxy) {
+		if ($this->organization instanceof \TYPO3\CMS\Extbase\Persistence\LazyLoadingProxy) {
 		  $this->organization->_loadRealInstance();
 		}
 		return $this->organization;
@@ -284,17 +286,17 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * Sets the age range of the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_AgeRange The age range of the offer
+	 * @param \Sjr\SjrOffers\Domain\Model\AgeRange The age range of the offer
 	 * @return void
 	 */
-	public function setAgeRange(Tx_SjrOffers_Domain_Model_AgeRange $ageRange = NULL) {
+	public function setAgeRange(\Sjr\SjrOffers\Domain\Model\AgeRange $ageRange = NULL) {
 		$this->ageRange = $ageRange;
 	}
 
 	/**
 	 * Returns the age range of the offer
 	 * 
-	 * @return Tx_SjrOffers_Domain_Model_AgeRange The age range of the offer
+	 * @return \Sjr\SjrOffers\Domain\Model\AgeRange The age range of the offer
 	 */
 	public function getAgeRange() {
 		return $this->ageRange;
@@ -303,17 +305,17 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * Sets the date range the offer is valid
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_DateRange The date range of the offer
+	 * @param \Sjr\SjrOffers\Domain\Model\DateRange The date range of the offer
 	 * @return void
 	 */
-	public function setDateRange(Tx_SjrOffers_Domain_Model_DateRange $dateRange = NULL) {
+	public function setDateRange(\Sjr\SjrOffers\Domain\Model\DateRange $dateRange = NULL) {
 		$this->dateRange = $dateRange;
 	}
 	
 	/**
 	 * Returns the date range the offer is valid
 	 * 
-	 * @return Tx_SjrOffers_Domain_Model_DateRange The date range the offer is valid
+	 * @return \Sjr\SjrOffers\Domain\Model\DateRange The date range the offer is valid
 	 */
 	public function getDateRange() {
 		return $this->dateRange;
@@ -322,17 +324,17 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * Sets the attendance range the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_AttendanceRange The attendance range of the offer
+	 * @param \Sjr\SjrOffers\Domain\Model\AttendanceRange The attendance range of the offer
 	 * @return void
 	 */
-	public function setAttendanceRange(Tx_SjrOffers_Domain_Model_AttendanceRange $attendanceRange = NULL) {
+	public function setAttendanceRange(\Sjr\SjrOffers\Domain\Model\AttendanceRange $attendanceRange = NULL) {
 		$this->attendanceRange = $attendanceRange;
 	}
 
 	/**
 	 * Returns the attendance range of the offer
 	 * 
-	 * @return Tx_SjrOffers_Domain_Model_AttendanceRange The attendance range of the offer
+	 * @return \Sjr\SjrOffers\Domain\Model\AttendanceRange The attendance range of the offer
 	 */
 	public function getAttendanceRange() {
 		return $this->attendanceRange;
@@ -341,17 +343,17 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * Sets the attendance fee for the offer
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage The attendance fees of the offer
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage The attendance fees of the offer
 	 * @return void
 	 */
-	public function setAttendanceFees(Tx_Extbase_Persistence_ObjectStorage $attendanceFees) {
+	public function setAttendanceFees(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $attendanceFees) {
 		$this->attendanceFees = $attendanceFees;
 	}
 
 	/**
 	 * Returns the attendance fee of the offer
 	 * 
-	 * @return Tx_Extbase_Persistence_ObjectStorage The attendance fees for the offer
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage The attendance fees for the offer
 	 */
 	public function getAttendanceFees() {
 		return $this->attendanceFees;
@@ -360,20 +362,20 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * Adds an attendance fee to the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_AttendanceFee The attendance fee to be added
+	 * @param \Sjr\SjrOffers\Domain\Model\AttendanceFee The attendance fee to be added
 	 * @return void
 	 */
-	public function addAttendanceFee(Tx_SjrOffers_Domain_Model_AttendanceFee $attendanceFee) {
+	public function addAttendanceFee(\Sjr\SjrOffers\Domain\Model\AttendanceFee $attendanceFee) {
 		$this->attendanceFees->attach($attendanceFee);
 	}
 
 	/**
 	 * Remove an attendance fee from the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_AttendanceFee The attendance fee to be removed
+	 * @param \Sjr\SjrOffers\Domain\Model\AttendanceFee The attendance fee to be removed
 	 * @return void
 	 */
-	public function removeAttendanceFee(Tx_SjrOffers_Domain_Model_AttendanceFee $attendanceFee) {
+	public function removeAttendanceFee(\Sjr\SjrOffers\Domain\Model\AttendanceFee $attendanceFee) {
 		$this->attendanceFees->detach($attendanceFee);
 	}
 
@@ -383,16 +385,16 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	 * @return void
 	 */
 	public function removeAllAttendanceFees() {
-		$this->attendanceFees = new Tx_Extbase_Persistence_ObjectStorage;
+		$this->attendanceFees = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 	}
 
 	/**
 	 * Sets the contact of the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Person $contact The contact of the offer
+	 * @param \Sjr\SjrOffers\Domain\Model\Person $contact The contact of the offer
 	 * @return void
 	 */
-	public function setContact(Tx_SjrOffers_Domain_Model_Person $contact) {
+	public function setContact(\Sjr\SjrOffers\Domain\Model\Person $contact) {
 		$this->contact = $contact;
 	}
 
@@ -408,7 +410,7 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * Returns the contact of the offer
 	 *
-	 * @return Tx_SjrOffers_Domain_Model_Person The contact of the offer
+	 * @return \Sjr\SjrOffers\Domain\Model\Person The contact of the offer
 	 */
 	public function getContact() {
 		return $this->contact;
@@ -417,17 +419,17 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * Sets the categories of the offer
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Category> The categories the offer is assigned to
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Category> The categories the offer is assigned to
 	 * @return void
 	 */
-	public function setCategories(Tx_Extbase_Persistence_ObjectStorage $categories) {
+	public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories) {
 		$this->categories = $categories;
 	}
 
 	/**
 	 * Returns the categories of the offer
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Category> The categories of the offer
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Category> The categories of the offer
 	 */
 	public function getCategories() {
 		return clone $this->categories;
@@ -436,37 +438,37 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * Adds a category to the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Category The category to be added
+	 * @param \Sjr\SjrOffers\Domain\Model\Category The category to be added
 	 * @return void
 	 */
-	public function addCategory(Tx_SjrOffers_Domain_Model_Category $category) {
+	public function addCategory(\Sjr\SjrOffers\Domain\Model\Category $category) {
 		$this->categories->attach($category);
 	}
 
 	/**
 	 * Remove a category from the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Category The category to be removed
+	 * @param \Sjr\SjrOffers\Domain\Model\Category The category to be removed
 	 * @return void
 	 */
-	public function removeCategory(Tx_SjrOffers_Domain_Model_Category $category) {
+	public function removeCategory(\Sjr\SjrOffers\Domain\Model\Category $category) {
 		$this->categories->detach($category);
 	}
 
 	/**
 	 * Sets the regions of the offer
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Region> The regions the offer is available
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Region> The regions the offer is available
 	 * @return void
 	 */
-	public function setRegions(Tx_Extbase_Persistence_ObjectStorage $regions) {
+	public function setRegions(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $regions) {
 		$this->regions = $regions;
 	}
 
 	/**
 	 * Returns the regions of the offer
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Region> The regions of the offer
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Region> The regions of the offer
 	 */
 	public function getRegions() {
 		return $this->regions;
@@ -475,20 +477,20 @@ class Tx_SjrOffers_Domain_Model_Offer extends Tx_Extbase_DomainObject_AbstractEn
 	/**
 	 * Adds a region to the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Region The region to be added
+	 * @param \Sjr\SjrOffers\Domain\Model\Region The region to be added
 	 * @return void
 	 */
-	public function addRegion(Tx_SjrOffers_Domain_Model_Region $region) {
+	public function addRegion(\Sjr\SjrOffers\Domain\Model\Region $region) {
 		$this->regions->attach($region);
 	}
 
 	/**
 	 * Remove a region from the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Region The region to be removed
+	 * @param \Sjr\SjrOffers\Domain\Model\Region The region to be removed
 	 * @return void
 	 */
-	public function removeRegion(Tx_SjrOffers_Domain_Model_Region $region) {
+	public function removeRegion(\Sjr\SjrOffers\Domain\Model\Region $region) {
 		$this->regions->detach($region);
 	}
 	
