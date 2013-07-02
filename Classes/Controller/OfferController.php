@@ -33,7 +33,7 @@ namespace Sjr\SjrOffers\Controller;
 class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController {
 
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_OfferRepository
+	 * @var \Sjr\SjrOffers\Domain\Model\OfferRepository
 	 */
 	protected $offerRepository;
 
@@ -54,10 +54,10 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Renders a list of offers
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Demand $demand A demand taken as a basis for filtering the offers
+	 * @param \Sjr\SjrOffers\Domain\Model\Demand $demand A demand taken as a basis for filtering the offers
 	 * @return string The rendered HTML string
 	 */
-	public function indexAction(Tx_SjrOffers_Domain_Model_Demand $demand = NULL) {
+	public function indexAction(\Sjr\SjrOffers\Domain\Model\Demand $demand = NULL) {
 		$allowedStates = (strlen($this->settings['allowedStates']) > 0) ? t3lib_div::intExplode(',', $this->settings['allowedStates']) : array();
 		$listCategories = (strlen($this->settings['listCategories']) > 0) ? t3lib_div::intExplode(',', $this->settings['listCategories']) : array();
 		$selectableCategories = (strlen($this->settings['selectableCategories']) > 0) ? t3lib_div::intExplode(',', $this->settings['selectableCategories']) : array();
@@ -96,11 +96,11 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Renders a single offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer $offer The offer to be displayed
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $offer The offer to be displayed
 	 * @return string The rendered HTML string
 	 * @dontvalidate $newContact
 	 */
-	public function showAction(Tx_SjrOffers_Domain_Model_Offer $offer, Tx_SjrOffers_Domain_Model_Person $newContact = NULL) {
+	public function showAction(\Sjr\SjrOffers\Domain\Model\Offer $offer, \Sjr\SjrOffers\Domain\Model\Person $newContact = NULL) {
 		$organization = $offer->getOrganization();
 		$this->view->assign('offer', $offer);
 		$this->view->assign('organization', $organization);
@@ -110,13 +110,13 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Displays a form for creating a new offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Organization $organization The organization the offer belogs to
-	 * @param Tx_SjrOffers_Domain_Model_Offer $newOffer A fresh offer object taken as a basis for the rendering
+	 * @param \Sjr\SjrOffers\Domain\Model\Organization $organization The organization the offer belogs to
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $newOffer A fresh offer object taken as a basis for the rendering
 	 * @return string An HTML form for creating a new offer
 	 * @dontvalidate $newOffer
 	 * @dontverifyrequesthash
 	 */
-	public function newAction(Tx_SjrOffers_Domain_Model_Organization $organization, Tx_SjrOffers_Domain_Model_Offer $newOffer = NULL) {
+	public function newAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Offer $newOffer = NULL) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
 			$this->view->assign('organization', $organization);
 			$this->view->assign('newOffer', $newOffer);
@@ -130,13 +130,13 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Creates a new offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Organization $organization The organization the offer belongs to
-	 * @param Tx_SjrOffers_Domain_Model_Offer $newOffer A fresh Offer object which has not yet been added to the repository
+	 * @param \Sjr\SjrOffers\Domain\Model\Organization $organization The organization the offer belongs to
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $newOffer A fresh Offer object which has not yet been added to the repository
 	 * @param array $attendanceFees An array of attendance fees. array(amount => '12.50', comment => 'Children')
 	 * @return void
 	 * @dontverifyrequesthash
 	 */
-	public function createAction(Tx_SjrOffers_Domain_Model_Organization $organization, Tx_SjrOffers_Domain_Model_Offer $newOffer, array $attendanceFees = array()) {
+	public function createAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Offer $newOffer, array $attendanceFees = array()) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
 			$newOffer = $this->createAndAddAttendanceFees($newOffer, $attendanceFees);
 			$organization->addOffer($newOffer);
@@ -150,12 +150,12 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Displays a form to edit an existing offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer $offer The existing, unmodified offer
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $offer The existing, unmodified offer
 	 * @return string Form for editing the existing organization
 	 * @dontvalidate $offer
 	 * @dontverifyrequesthash
 	 */
-	public function editAction(Tx_SjrOffers_Domain_Model_Offer $offer) {
+	public function editAction(\Sjr\SjrOffers\Domain\Model\Offer $offer) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$this->view->assign('offer', $offer);
 			$this->view->assign('regions', $this->regionRepository->findAll());
@@ -167,12 +167,12 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Updates an existing offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer $offer The existing
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $offer The existing
 	 * @param array $attendanceFees An array of attendence fees. array(amount => '12.50', comment => 'Children')
 	 * @return void
 	 * @dontverifyrequesthash
 	 */
-	public function updateAction(Tx_SjrOffers_Domain_Model_Offer $offer, array $attendanceFees = array()) {
+	public function updateAction(\Sjr\SjrOffers\Domain\Model\Offer $offer, array $attendanceFees = array()) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$offer->removeAllAttendanceFees();
 			$offer = $this->createAndAddAttendanceFees($offer, $attendanceFees);
@@ -186,10 +186,10 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Deletes an existing offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer $offer The offer to be deleted
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $offer The offer to be deleted
 	 * @return void
 	 */
-	public function deleteAction(Tx_SjrOffers_Domain_Model_Offer $offer) {
+	public function deleteAction(\Sjr\SjrOffers\Domain\Model\Offer $offer) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$this->offerRepository->remove($offer);
 		} else {
@@ -201,11 +201,11 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Creates and attaches a contact
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer $offer The offer the contact belongs to
-	 * @param Tx_SjrOffers_Domain_Model_Person $newContact The contact to be created
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $offer The offer the contact belongs to
+	 * @param \Sjr\SjrOffers\Domain\Model\Person $newContact The contact to be created
 	 * @return void
 	 */
-	public function createContactAction(Tx_SjrOffers_Domain_Model_Offer $offer, Tx_SjrOffers_Domain_Model_Person $newContact) {
+	public function createContactAction(\Sjr\SjrOffers\Domain\Model\Offer $offer, \Sjr\SjrOffers\Domain\Model\Person $newContact) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$offer->setContact($newContact);
 		} else {
@@ -217,12 +217,12 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Attaches an extisting contact
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer $offer The offer the contact belongs to
-	 * @param Tx_SjrOffers_Domain_Model_Person $contact The contact to be created
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $offer The offer the contact belongs to
+	 * @param \Sjr\SjrOffers\Domain\Model\Person $contact The contact to be created
 	 * @return void
 	 * @dontverifyrequesthash
 	 */
-	public function setContactAction(Tx_SjrOffers_Domain_Model_Offer $offer) {
+	public function setContactAction(\Sjr\SjrOffers\Domain\Model\Offer $offer) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$this->offerRepository->update($offer);
 		} else {
@@ -234,12 +234,12 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Updates a contact
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer $offer The offer the contact belongs to
-	 * @param Tx_SjrOffers_Domain_Model_Person $contact The contact to be updated
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $offer The offer the contact belongs to
+	 * @param \Sjr\SjrOffers\Domain\Model\Person $contact The contact to be updated
 	 * @return void
 	 * @dontverifyrequesthash
 	 */
-	public function updateContactAction(Tx_SjrOffers_Domain_Model_Offer $offer, Tx_SjrOffers_Domain_Model_Person $contact) {
+	public function updateContactAction(\Sjr\SjrOffers\Domain\Model\Offer $offer, \Sjr\SjrOffers\Domain\Model\Person $contact) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$this->personRepository->update($contact);
 		} else {
@@ -251,11 +251,11 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Removes the contact form the offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer $offer The offer the contact belongs to
-	 * @param Tx_SjrOffers_Domain_Model_Person $contact The contact to be removed
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $offer The offer the contact belongs to
+	 * @param \Sjr\SjrOffers\Domain\Model\Person $contact The contact to be removed
 	 * @return void
 	 */
-	public function removeContactAction(Tx_SjrOffers_Domain_Model_Offer $offer, Tx_SjrOffers_Domain_Model_Person $contact) {
+	public function removeContactAction(\Sjr\SjrOffers\Domain\Model\Offer $offer, \Sjr\SjrOffers\Domain\Model\Person $contact) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$offer->removeContact($contact);
 		} else {
@@ -267,14 +267,14 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	/**
 	 * Creates an AttendanceFee for every item in the attendanceFees array and adds it to the offer.
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer $offer The offer the attendance fees should be added to
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $offer The offer the attendance fees should be added to
 	 * @param array $attendanceFees An array of attendence fees. array(amount => '12.50', comment => 'Children')
-	 * @return Tx_SjrOffers_Domain_Model_Offer The offer 
+	 * @return \Sjr\SjrOffers\Domain\Model\Offer The offer 
 	 */
-	protected function createAndAddAttendanceFees( Tx_SjrOffers_Domain_Model_Offer $offer, array $attendanceFees = array()) {
+	protected function createAndAddAttendanceFees( \Sjr\SjrOffers\Domain\Model\Offer $offer, array $attendanceFees = array()) {
 		foreach ($attendanceFees['amount'] as $key => $amount) {
 			if (!empty($amount)) {
-				$offer->addAttendanceFee(new Tx_SjrOffers_Domain_Model_AttendanceFee($amount, $attendanceFees['comment'][$key]));
+				$offer->addAttendanceFee(new \Sjr\SjrOffers\Domain\Model\AttendanceFee($amount, $attendanceFees['comment'][$key]));
 			}
 		}
 		return $offer;

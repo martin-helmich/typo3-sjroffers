@@ -40,7 +40,7 @@ class Status extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $description;
 	
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Category> The allowed categories for the organization having the status
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Category> The allowed categories for the organization having the status
 	 **/
 	protected $allowedCategories;
 	
@@ -51,7 +51,7 @@ class Status extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function __construct($title) {
 		$this->setTitle($title);
-		$this->setAllowedCategories(new Tx_Extbase_Persistence_ObjectStorage);
+		$this->setAllowedCategories(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage);
 	}
 	
 	/**
@@ -95,17 +95,17 @@ class Status extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the categories of the organization
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Category> The categories the organization is assigned to
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Category> The categories the organization is assigned to
 	 * @return void
 	 */
-	public function setAllowedCategories(Tx_Extbase_Persistence_ObjectStorage $allowedCategories) {
+	public function setAllowedCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $allowedCategories) {
 		$this->allowedCategories = $allowedCategories;
 	}
 
 	/**
 	 * Returns the categories of the organization
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_SjrOffers_Domain_Model_Category> The categories of the organization
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Sjr\SjrOffers\Domain\Model\Category> The categories of the organization
 	 */
 	public function getAllowedCategories() {
 		return clone $this->allowedCategories;
@@ -114,20 +114,20 @@ class Status extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Adds a category to the organization
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Category The category to be added
+	 * @param \Sjr\SjrOffers\Domain\Model\Category The category to be added
 	 * @return void
 	 */
-	public function addCategory(Tx_SjrOffers_Domain_Model_Category $allowedCategory) {
+	public function addCategory(\Sjr\SjrOffers\Domain\Model\Category $allowedCategory) {
 		$this->allowedCategories->attach($allowedCategory);
 	}
 
 	/**
 	 * Remove a category from the organization
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Category The category to be removed
+	 * @param \Sjr\SjrOffers\Domain\Model\Category The category to be removed
 	 * @return void
 	 */
-	public function removeCategory(Tx_SjrOffers_Domain_Model_Category $allowedCategory) {
+	public function removeCategory(\Sjr\SjrOffers\Domain\Model\Category $allowedCategory) {
 		$this->allowedCategories->detach($allowedCategory);
 	}
 		

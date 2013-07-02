@@ -35,7 +35,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @param array $listCategories An array of categories the offer has to be assigned to
 	 * @return array Matched offers
 	 */
-	public function findForAdmin(Tx_SjrOffers_Domain_Model_Organization $organization, array $listCategories = array()) {
+	public function findForAdmin(\Sjr\SjrOffers\Domain\Model\Organization $organization, array $listCategories = array()) {
 		$query = $this->createQuery();
 		$query->matching(
 			$query->equals('organization', $organization)
@@ -52,13 +52,13 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	/**
 	 * Finds all offers that meets the specified demand.
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Demand $demand 
+	 * @param \Sjr\SjrOffers\Domain\Model\Demand $demand 
 	 * @param array $propertiesToSearch A array of properties to be searched for occurrances of the search word
 	 * @param array $listCategories An array of categories the offer has to be assigned to
 	 * @param array $allowedStates An array of allowed states of the organization
 	 * @return array Matched offers
 	 */
-	public function findDemanded(Tx_SjrOffers_Domain_Model_Demand $demand = NULL, array $propertiesToSearch = array(), array $listCategories = array(), array $allowedStates = array()) {
+	public function findDemanded(\Sjr\SjrOffers\Domain\Model\Demand $demand = NULL, array $propertiesToSearch = array(), array $listCategories = array(), array $allowedStates = array()) {
 		$query = $this->createQuery();
 		$constraints = array();
 		if ($demand !== NULL) {

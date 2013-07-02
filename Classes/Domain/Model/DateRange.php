@@ -27,15 +27,15 @@ namespace Sjr\SjrOffers\Domain\Model;
 /**
  * A date range specifying the period an offer is valid
  */
-class DateRange extends Tx_SjrOffers_Domain_Model_RangeConstraint implements Tx_SjrOffers_Domain_Model_DateRangeInterface {
+class DateRange extends \Sjr\SjrOffers\Domain\Model\RangeConstraint implements \Sjr\SjrOffers\Domain\Model\DateRangeInterface {
 
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_DateTime The minimum value
+	 * @var \Sjr\SjrOffers\Domain\Model\DateTime The minimum value
 	 **/
 	protected $minimumValue;
 	
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_DateTime The maximum value
+	 * @var \Sjr\SjrOffers\Domain\Model\DateTime The maximum value
 	 **/
 	protected $maximumValue;
 

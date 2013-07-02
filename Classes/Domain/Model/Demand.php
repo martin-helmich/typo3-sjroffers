@@ -30,7 +30,7 @@ namespace Sjr\SjrOffers\Domain\Model;
 class Demand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_Organization The demanded organization
+	 * @var \Sjr\SjrOffers\Domain\Model\Organization The demanded organization
 	 **/
 	protected $organization;
 	
@@ -45,26 +45,26 @@ class Demand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $age;
 	
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_Category The demanded category
+	 * @var \Sjr\SjrOffers\Domain\Model\Category The demanded category
 	 **/
 	protected $category;
 	
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_Region The demanded region
+	 * @var \Sjr\SjrOffers\Domain\Model\Region The demanded region
 	 **/
 	protected $region;
 	
 
 	/**
-	 * @param Tx_SjrOffers_Domain_Model_Organization $organization The demanded organization
+	 * @param \Sjr\SjrOffers\Domain\Model\Organization $organization The demanded organization
 	 * @return void
 	 */
-	public function setOrganization(Tx_SjrOffers_Domain_Model_Organization $organization = NULL) {
+	public function setOrganization(\Sjr\SjrOffers\Domain\Model\Organization $organization = NULL) {
 		$this->organization = $organization;
 	}
 
 	/**
-	 * @return Tx_SjrOffers_Domain_Model_Organization The demanded organization
+	 * @return \Sjr\SjrOffers\Domain\Model\Organization The demanded organization
 	 */
 	public function getOrganization() {
 		return $this->organization;
@@ -101,30 +101,30 @@ class Demand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 	
 	/**
-	 * @param Tx_SjrOffers_Domain_Model_Category The demanded category
+	 * @param \Sjr\SjrOffers\Domain\Model\Category The demanded category
 	 * @return void
 	 */
-	public function setCategory(Tx_SjrOffers_Domain_Model_Category $category = NULL) {
+	public function setCategory(\Sjr\SjrOffers\Domain\Model\Category $category = NULL) {
 		$this->category = $category;
 	}
 
 	/**
-	 * @return Tx_SjrOffers_Domain_Model_Category The demanded category
+	 * @return \Sjr\SjrOffers\Domain\Model\Category The demanded category
 	 */
 	public function getCategory() {
 		return $this->category;
 	}
 	
 	/**
-	 * @param Tx_SjrOffers_Domain_Model_Region The demanded region
+	 * @param \Sjr\SjrOffers\Domain\Model\Region The demanded region
 	 * @return void
 	 */
-	public function setRegion(Tx_SjrOffers_Domain_Model_Region $region = NULL) {
+	public function setRegion(\Sjr\SjrOffers\Domain\Model\Region $region = NULL) {
 		$this->region = $region;
 	}
 
 	/**
-	 * @return Tx_SjrOffers_Domain_Model_Region The demanded region
+	 * @return \Sjr\SjrOffers\Domain\Model\Region The demanded region
 	 */
 	public function getRegion() {
 		return $this->region;

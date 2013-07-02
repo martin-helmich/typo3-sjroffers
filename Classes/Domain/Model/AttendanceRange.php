@@ -27,7 +27,7 @@ namespace Sjr\SjrOffers\Domain\Model;
 /**
  * An attendance range
  */
-class AttendanceRange extends Tx_SjrOffers_Domain_Model_RangeConstraint implements Tx_SjrOffers_Domain_Model_NumericRangeInterface {
+class AttendanceRange extends \Sjr\SjrOffers\Domain\Model\RangeConstraint implements \Sjr\SjrOffers\Domain\Model\NumericRangeInterface {
 	
 }
 ?>

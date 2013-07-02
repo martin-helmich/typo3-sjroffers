@@ -43,7 +43,7 @@ class RangeConstraintValidator extends \TYPO3\CMS\Extbase\Validator\AbstractVali
 	 */
 	public function isValid($value) {
 		$this->errors = array();
-		if ($value instanceof Tx_SjrOffers_Domain_Model_RangeConstraint) {
+		if ($value instanceof \Sjr\SjrOffers\Domain\Model\RangeConstraint) {
 			$minimumValue = $value->getMinimumValue();
 			$maximumValue = $value->getMaximumValue();
 			if ($maximumValue !== NULL && $minimumValue !== NULL) {

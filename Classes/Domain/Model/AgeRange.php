@@ -27,7 +27,7 @@ namespace Sjr\SjrOffers\Domain\Model;
 /**
  * An age range
  */
-class AgeRange extends Tx_SjrOffers_Domain_Model_RangeConstraint implements Tx_SjrOffers_Domain_Model_NumericRangeInterface {
+class AgeRange extends \Sjr\SjrOffers\Domain\Model\RangeConstraint implements \Sjr\SjrOffers\Domain\Model\NumericRangeInterface {
 	
 }
 ?>

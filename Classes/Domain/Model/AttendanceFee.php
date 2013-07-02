@@ -31,7 +31,7 @@ class AttendanceFee extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	
 	/**
 	 * @var string The amount.
-	 * @validate Tx_SjrOffers_Domain_Validator_AmountValidator
+	 * @validate \Sjr\SjrOffers\Domain\Validator\AmountValidator
 	 **/
 	protected $amount = '0.00';
 		

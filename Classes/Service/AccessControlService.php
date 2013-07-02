@@ -39,7 +39,7 @@ class AccessControlService implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @return bool The result; TRUE if the given person is logged in; otherwise FALSE
 	 */
 	public function isLoggedIn($person = NULL) {
-		if ($person instanceof Tx_Extbase_Persistence_LazyLoadingProxy) {
+		if ($person instanceof \TYPO3\CMS\Extbase\Persistence\LazyLoadingProxy) {
 			$person->_loadRealInstance();
 		}
 		if (is_object($person)) {

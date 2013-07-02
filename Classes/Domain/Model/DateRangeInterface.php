@@ -27,5 +27,5 @@ namespace Sjr\SjrOffers\Domain\Model;
 /**
  * An interface indicating a date range
  */
-interface Tx_SjrOffers_Domain_Model_DateRangeInterface {}
+interface DateRangeInterface {}
 ?>

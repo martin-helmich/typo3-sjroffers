@@ -33,7 +33,7 @@ namespace Sjr\SjrOffers\Controller;
 class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController {
 
 	/**
-	 * @var Tx_SjrOffers_Domain_Model_OrganizationRepository
+	 * @var \Sjr\SjrOffers\Domain\Model\OrganizationRepository
 	 */
 	protected $organizationRepository;
 
@@ -62,12 +62,12 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	/**
 	 * Renders a single organization
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Organization $organization The organization of which the offers should be displayed
-	 * @param Tx_SjrOffers_Domain_Model_Person $newContact The contact to be created
+	 * @param \Sjr\SjrOffers\Domain\Model\Organization $organization The organization of which the offers should be displayed
+	 * @param \Sjr\SjrOffers\Domain\Model\Person $newContact The contact to be created
 	 * @return string The rendered HTML string
 	 * @dontvalidate $newContact
 	 */
-	public function showAction(Tx_SjrOffers_Domain_Model_Organization $organization, Tx_SjrOffers_Domain_Model_Person $newContact = NULL) {
+	public function showAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Person $newContact = NULL) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
 			$contacts = $organization->getAllContacts();
 			$this->view->assign('offers', $this->offerRepository->findForAdmin($organization));
@@ -75,7 +75,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 			$allowedStates = (strlen($this->settings['allowedStates']) > 0) ? t3lib_div::intExplode(',', $this->settings['allowedStates']) : array();
 			$listCategories = (strlen($this->settings['listCategories']) > 0) ? t3lib_div::intExplode(',', $this->settings['listCategories']) : array();
 			$contacts = $organization->getContacts();
-			$demand = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Model_Demand');
+			$demand = t3lib_div::makeInstance('\Sjr\SjrOffers\Domain\Model\Demand');
 			$demand->setOrganization($organization);
 			$this->view->assign('offers', $this->offerRepository->findDemanded(
 				$demand,
@@ -92,11 +92,11 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	/**
 	 * Edits an existing organization
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Organization $organization The organization to be edited
+	 * @param \Sjr\SjrOffers\Domain\Model\Organization $organization The organization to be edited
 	 * @return string The rendered HTML-form
 	 * @dontvalidate $organization
 	 */
-	public function editAction(Tx_SjrOffers_Domain_Model_Organization $organization) {
+	public function editAction(\Sjr\SjrOffers\Domain\Model\Organization $organization) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
 			$this->view->assign('organization', $organization);
 			$this->view->assign('contacts', $this->personRepository->findAll());
@@ -108,10 +108,10 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	/**
 	 * Updates an existing organization
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Organization $organization A not yet persisted clone of the original organization containing the modifications
+	 * @param \Sjr\SjrOffers\Domain\Model\Organization $organization A not yet persisted clone of the original organization containing the modifications
 	 * @return void
 	 */
-	public function updateAction(Tx_SjrOffers_Domain_Model_Organization $organization) {
+	public function updateAction(\Sjr\SjrOffers\Domain\Model\Organization $organization) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
 			$this->organizationRepository->update($organization);
 		} else {
@@ -123,11 +123,11 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	/**
 	 * Creates and attaches a contact
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Organization $organization The organization the contact belongs to
-	 * @param Tx_SjrOffers_Domain_Model_Person $newContact The contact to be created
+	 * @param \Sjr\SjrOffers\Domain\Model\Organization $organization The organization the contact belongs to
+	 * @param \Sjr\SjrOffers\Domain\Model\Person $newContact The contact to be created
 	 * @return void
 	 */
-	public function createContactAction(Tx_SjrOffers_Domain_Model_Organization $organization, Tx_SjrOffers_Domain_Model_Person $newContact) {
+	public function createContactAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Person $newContact) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
 			$organization->addContact($newContact);
 		} else {
@@ -139,12 +139,12 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	/**
 	 * Updates a contact
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Organization $organization The organization the contact belongs to
-	 * @param Tx_SjrOffers_Domain_Model_Person $contact The contact to be updated
+	 * @param \Sjr\SjrOffers\Domain\Model\Organization $organization The organization the contact belongs to
+	 * @param \Sjr\SjrOffers\Domain\Model\Person $contact The contact to be updated
 	 * @return void
 	 * @dontvalidatehmac
 	 */
-	public function updateContactAction(Tx_SjrOffers_Domain_Model_Organization $organization, Tx_SjrOffers_Domain_Model_Person $contact) {
+	public function updateContactAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Person $contact) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
 			$this->personRepository->update($contact);
 		} else {
@@ -156,12 +156,12 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	/**
 	 * Detaches a contact form the organization
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Organization $organization The organization the contact belongs to
-	 * @param Tx_SjrOffers_Domain_Model_Person $contact The contact to be deleted
+	 * @param \Sjr\SjrOffers\Domain\Model\Organization $organization The organization the contact belongs to
+	 * @param \Sjr\SjrOffers\Domain\Model\Person $contact The contact to be deleted
 	 * @return void
 	 * @dontvalidate $contact
 	 */
-	public function removeContactAction(Tx_SjrOffers_Domain_Model_Organization $organization, Tx_SjrOffers_Domain_Model_Person $contact) {
+	public function removeContactAction(\Sjr\SjrOffers\Domain\Model\Organization $organization, \Sjr\SjrOffers\Domain\Model\Person $contact) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($organization->getAdministrator())) {
 			$organization->removeContact($contact);
 			$this->personRepository->remove($contact);
@@ -174,11 +174,11 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	/**
 	 * Removes an existing offer
 	 *
-	 * @param Tx_SjrOffers_Domain_Model_Offer $offer The offer to be deleted
+	 * @param \Sjr\SjrOffers\Domain\Model\Offer $offer The offer to be deleted
 	 * @return void
 	 * @dontvalidate $offer
 	 */
-	public function removeOfferAction(Tx_SjrOffers_Domain_Model_Offer $offer) {
+	public function removeOfferAction(\Sjr\SjrOffers\Domain\Model\Offer $offer) {
 		if ($this->accessControllService->backendAdminIsLoggedIn() || $this->accessControllService->isLoggedIn($offer->getOrganization()->getAdministrator())) {
 			$organization = $offer->getOrganization();
 			$organization->removeOffer($offer);

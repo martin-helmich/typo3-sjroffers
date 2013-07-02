@@ -27,5 +27,5 @@ namespace Sjr\SjrOffers\Domain\Model;
 /**
  * An interface indicating a numeric range
  */
-interface Tx_SjrOffers_Domain_Model_NumericRangeInterface {}
+interface NumericRangeInterface {}
 ?>
