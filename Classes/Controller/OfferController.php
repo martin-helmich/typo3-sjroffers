@@ -75,10 +75,10 @@ class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
 	 * @return string The rendered HTML string
 	 */
 	public function indexAction(\Sjr\SjrOffers\Domain\Model\Demand $demand = NULL) {
-		$allowedStates = (strlen($this->settings['allowedStates']) > 0) ? t3lib_div::intExplode(',', $this->settings['allowedStates']) : array();
-		$listCategories = (strlen($this->settings['listCategories']) > 0) ? t3lib_div::intExplode(',', $this->settings['listCategories']) : array();
-		$selectableCategories = (strlen($this->settings['selectableCategories']) > 0) ? t3lib_div::intExplode(',', $this->settings['selectableCategories']) : array();
-		$propertiesToSearch = (strlen($this->settings['propertiesToSearch']) > 0) ? t3lib_div::trimExplode(',', $this->settings['propertiesToSearch']) : array();
+		$allowedStates = (strlen($this->settings['allowedStates']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['allowedStates']) : array();
+		$listCategories = (strlen($this->settings['listCategories']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['listCategories']) : array();
+		$selectableCategories = (strlen($this->settings['selectableCategories']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['selectableCategories']) : array();
+		$propertiesToSearch = (strlen($this->settings['propertiesToSearch']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $this->settings['propertiesToSearch']) : array();
 
 		$this->view->assign('demand', $demand);
 		$this->view->assign('organizations',

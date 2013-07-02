@@ -68,7 +68,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 	 * @return string The rendered view
 	 */
 	public function indexAction() {
-		$this->view->assign('organizations', $this->organizationRepository->findByStates(t3lib_div::intExplode(',', $this->settings['allowedStates'])));
+		$this->view->assign('organizations', $this->organizationRepository->findByStates(\TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['allowedStates'])));
 	}
 	
 	/**
@@ -84,10 +84,10 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 			$contacts = $organization->getAllContacts();
 			$this->view->assign('offers', $this->offerRepository->findForAdmin($organization));
 		} else {
-			$allowedStates = (strlen($this->settings['allowedStates']) > 0) ? t3lib_div::intExplode(',', $this->settings['allowedStates']) : array();
-			$listCategories = (strlen($this->settings['listCategories']) > 0) ? t3lib_div::intExplode(',', $this->settings['listCategories']) : array();
+			$allowedStates = (strlen($this->settings['allowedStates']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['allowedStates']) : array();
+			$listCategories = (strlen($this->settings['listCategories']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['listCategories']) : array();
 			$contacts = $organization->getContacts();
-			$demand = t3lib_div::makeInstance('\Sjr\SjrOffers\Domain\Model\Demand');
+			$demand = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\Sjr\SjrOffers\Domain\Model\Demand');
 			$demand->setOrganization($organization);
 			$this->view->assign('offers', $this->offerRepository->findDemanded(
 				$demand,
