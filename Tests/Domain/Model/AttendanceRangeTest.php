@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * Testcase for an attendance range
  */
-class Tx_SjrOffers_Domain_Model_AttendanceRangeTest extends Tx_Extbase_BaseTestCase {
+class AttendanceRangeTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * This is the data provider for minimum and maximum values
@@ -44,7 +46,7 @@ class Tx_SjrOffers_Domain_Model_AttendanceRangeTest extends Tx_Extbase_BaseTestC
 	 * @test
 	 */
 	public function theMinimumAndMaximumValueCanBeSetAtConstructionTime() {
-	    $constraint = new Tx_SjrOffers_Domain_Model_AttendanceRange(12, 123123);
+	    $constraint = new \Sjr\SjrOffers\Domain\Model\AttendanceRange(12, 123123);
 		$this->assertEquals(12, $constraint->getMinimumValue());
 		$this->assertEquals(123123, $constraint->getMaximumValue());
 	}
@@ -53,7 +55,7 @@ class Tx_SjrOffers_Domain_Model_AttendanceRangeTest extends Tx_Extbase_BaseTestC
 	 * @test
 	 */
 	public function theMinimumAndMaximumValueDefaultsToZero() {
-	    $constraint = new Tx_SjrOffers_Domain_Model_AttendanceRange;
+	    $constraint = new \Sjr\SjrOffers\Domain\Model\AttendanceRange;
 		$this->assertEquals(0, $constraint->getMinimumValue());
 		$this->assertEquals(0, $constraint->getMaximumValue());
 	}
@@ -63,7 +65,7 @@ class Tx_SjrOffers_Domain_Model_AttendanceRangeTest extends Tx_Extbase_BaseTestC
 	 * @dataProvider providerForMinMaxValues
 	 */
 	public function theMinimumValueCanBeSet($minimumValue, $maximumValue) {
-	    $constraint = new Tx_SjrOffers_Domain_Model_AttendanceRange;
+	    $constraint = new \Sjr\SjrOffers\Domain\Model\AttendanceRange;
 		$constraint->setMinimumValue($minimumValue);
 		$this->assertEquals($minimumValue, $constraint->getMinimumValue());
 	}
@@ -73,7 +75,7 @@ class Tx_SjrOffers_Domain_Model_AttendanceRangeTest extends Tx_Extbase_BaseTestC
 	 * @dataProvider providerForMinMaxValues
 	 */
 	public function theMaximumValueCanBeSet($minimumValue, $maximumValue) {
-	    $constraint = new Tx_SjrOffers_Domain_Model_AttendanceRange;
+	    $constraint = new \Sjr\SjrOffers\Domain\Model\AttendanceRange;
 		$constraint->setMaximumValue($maximumValue);
 		$this->assertEquals($maximumValue, $constraint->getMaximumValue());
 	}

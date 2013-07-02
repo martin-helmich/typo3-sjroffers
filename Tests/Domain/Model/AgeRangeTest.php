@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * Testcase for an age range
  */
-class Tx_SjrOffers_Domain_Model_AgeRangeTest extends Tx_Extbase_BaseTestCase {
+class AgeRangeTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * This is the data provider for minimum and maximum values
@@ -45,7 +47,7 @@ class Tx_SjrOffers_Domain_Model_AgeRangeTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theMinimumAndMaximumValueCanBeSetAtConstructionTime() {
-	    $constraint = new Tx_SjrOffers_Domain_Model_AgeRange(12, 123123);
+	    $constraint = new \Sjr\SjrOffers\Domain\Model\AgeRange(12, 123123);
 		$this->assertEquals(12, $constraint->getMinimumValue());
 		$this->assertEquals(123123, $constraint->getMaximumValue());
 	}
@@ -54,7 +56,7 @@ class Tx_SjrOffers_Domain_Model_AgeRangeTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theMinimumAndMaximumValueDefaultsToZero() {
-	    $constraint = new Tx_SjrOffers_Domain_Model_AgeRange;
+	    $constraint = new \Sjr\SjrOffers\Domain\Model\AgeRange;
 		$this->assertEquals(0, $constraint->getMinimumValue());
 		$this->assertEquals(0, $constraint->getMaximumValue());
 	}
@@ -64,7 +66,7 @@ class Tx_SjrOffers_Domain_Model_AgeRangeTest extends Tx_Extbase_BaseTestCase {
 	 * @dataProvider providerForMinMaxValues
 	 */
 	public function theMinimumValueCanBeSet($minimumValue, $maximumValue) {
-	    $constraint = new Tx_SjrOffers_Domain_Model_AgeRange;
+	    $constraint = new \Sjr\SjrOffers\Domain\Model\AgeRange;
 		$constraint->setMinimumValue($minimumValue);
 		$this->assertEquals($minimumValue, $constraint->getMinimumValue());
 	}
@@ -74,7 +76,7 @@ class Tx_SjrOffers_Domain_Model_AgeRangeTest extends Tx_Extbase_BaseTestCase {
 	 * @dataProvider providerForMinMaxValues
 	 */
 	public function theMaximumValueCanBeSet($minimumValue, $maximumValue) {
-	    $constraint = new Tx_SjrOffers_Domain_Model_AgeRange;
+	    $constraint = new \Sjr\SjrOffers\Domain\Model\AgeRange;
 		$constraint->setMaximumValue($maximumValue);
 		$this->assertEquals($maximumValue, $constraint->getMaximumValue());
 	}

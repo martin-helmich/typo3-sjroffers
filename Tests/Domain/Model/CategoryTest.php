@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,13 +27,13 @@
 /**
  * Testcase for the Category class
  */
-class Tx_SjrOffers_Domain_Model_CategoryTest extends Tx_Extbase_BaseTestCase {
+class CategoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * @test
 	 */
 	public function anInstanceOfTheCategoryCanBeConstructed() {
-	    $category = new Tx_SjrOffers_Domain_Model_Category('The Category');
+	    $category = new \Sjr\SjrOffers\Domain\Model\Category('The Category');
 		$this->assertEquals('The Category', $category->getTitle());
 	}
 
@@ -39,7 +41,7 @@ class Tx_SjrOffers_Domain_Model_CategoryTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theTitleOfTheCategoryCanBeSet() {
-	    $category = new Tx_SjrOffers_Domain_Model_Category('The Category');
+	    $category = new \Sjr\SjrOffers\Domain\Model\Category('The Category');
 		$title = 'Another title';
 		$category->setTitle($title);
 		$this->assertEquals($title, $category->getTitle());
@@ -49,7 +51,7 @@ class Tx_SjrOffers_Domain_Model_CategoryTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theDescriptionOfTheCategoryCanBeSet() {
-	    $category = new Tx_SjrOffers_Domain_Model_Category;
+	    $category = new \Sjr\SjrOffers\Domain\Model\Category;
 		$description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.\nUt enim ad minim veniam, quis nostrud.";
 		$category->setDescription($description);
 		$this->assertEquals($description, $category->getDescription());
@@ -59,7 +61,7 @@ class Tx_SjrOffers_Domain_Model_CategoryTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theCategoryCanBeConvertedToString() {
-	    $category = new Tx_SjrOffers_Domain_Model_Category('The Category');
+	    $category = new \Sjr\SjrOffers\Domain\Model\Category('The Category');
 		$this->assertEquals('The Category', $category->__toString());
 	}	
 	
@@ -67,7 +69,7 @@ class Tx_SjrOffers_Domain_Model_CategoryTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function isInternalFlagDefaultsToFalse() {
-	    $category = new Tx_SjrOffers_Domain_Model_Category('The Category');
+	    $category = new \Sjr\SjrOffers\Domain\Model\Category('The Category');
 		$this->assertFalse($category->getIsInternal());
 	}
 	
@@ -75,7 +77,7 @@ class Tx_SjrOffers_Domain_Model_CategoryTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function isInternalFlagCanBeSet() {
-	    $category = new Tx_SjrOffers_Domain_Model_Category('The Category');
+	    $category = new \Sjr\SjrOffers\Domain\Model\Category('The Category');
 		$category->setIsInternal(FALSE);
 		$this->assertFalse($category->getIsInternal());
 		$category->setIsInternal(TRUE);

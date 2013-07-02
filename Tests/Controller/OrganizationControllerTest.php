@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Controller;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,19 +27,19 @@
 /**
  * Testcase for the OrganizationController class
  */
-class Tx_SjrOffers_Controller_OrganizationControllerTest extends Tx_Extbase_BaseTestCase {
+class OrganizationControllerTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * @test
 	 */
 	public function indexActionWorks() {
-		$mockOrganizationRepository = $this->getMock('Tx_SjrOffers_Domain_Repository_OrganizationRepository', array('findAll'), array(), '', FALSE);		
+		$mockOrganizationRepository = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Repository\\OrganizationRepository', array('findAll'), array(), '', FALSE);		
 		$mockOrganizationRepository->expects($this->once())->method('findAll')->will($this->returnValue(array('organization1', 'organization2')));
 
-		$mockView = $this->getMock('Tx_Fluid_Core_View_TemplateView', array('assign'), array(), '', FALSE);
+		$mockView = $this->getMock('\\TYPO3\\CMS\\Fluid\\Core\\View\\TemplateView', array('assign'), array(), '', FALSE);
 		$mockView->expects($this->once())->method('assign')->with('organizations', array('organization1', 'organization2'));
 
-		$mockController = $this->getMock($this->buildAccessibleProxy('Tx_SjrOffers_Controller_OrganizationController'), array('dummy'), array(), '', FALSE);
+		$mockController = $this->getMock($this->buildAccessibleProxy('\\Sjr\\SjrOffers\\Controller\\OrganizationController'), array('dummy'), array(), '', FALSE);
 		$mockController->_set('organizationRepository', $mockOrganizationRepository);
 		$mockController->_set('view', $mockView);
 		$mockController->indexAction();

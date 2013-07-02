@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,13 +27,13 @@
 /**
  * Testcase for the Person class
  */
-class Tx_SjrOffers_Domain_Model_PersonTest extends Tx_Extbase_BaseTestCase {
+class PersonTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * @test
 	 */
 	public function anInstanceOfThePersonCanBeConstructed() {
-	    $Person = new Tx_SjrOffers_Domain_Model_Person('John Doe');
+	    $Person = new \Sjr\SjrOffers\Domain\Model\Person('John Doe');
 		$this->assertEquals('John Doe', $Person->getName());
 	}
 
@@ -39,7 +41,7 @@ class Tx_SjrOffers_Domain_Model_PersonTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theNameOfThePersonCanBeSet() {
-	    $Person = new Tx_SjrOffers_Domain_Model_Person();
+	    $Person = new \Sjr\SjrOffers\Domain\Model\Person();
 		$Person->setName('Kasper Skårhøj');
 		$this->assertEquals('Kasper Skårhøj', $Person->getName());
 	}
@@ -48,7 +50,7 @@ class Tx_SjrOffers_Domain_Model_PersonTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theAdressOfThePersonCanBeSet() {
-	    $Person = new Tx_SjrOffers_Domain_Model_Person;
+	    $Person = new \Sjr\SjrOffers\Domain\Model\Person;
 		$Person->setAddress("The first address line\nThe second address line");
 		$this->assertEquals("The first address line\nThe second address line", $Person->getAddress());
 	}
@@ -57,7 +59,7 @@ class Tx_SjrOffers_Domain_Model_PersonTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theTelephoneNumberOfThePersonCanBeSet() {
-	    $Person = new Tx_SjrOffers_Domain_Model_Person('John Doe');
+	    $Person = new \Sjr\SjrOffers\Domain\Model\Person('John Doe');
 		$Person->setTelephoneNumber("+49 (0)711 34556-234");
 		$this->assertEquals("+49 (0)711 34556-234", $Person->getTelephoneNumber());
 	}
@@ -66,7 +68,7 @@ class Tx_SjrOffers_Domain_Model_PersonTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theTelefaxNumberOfThePersonCanBeSet() {
-	    $Person = new Tx_SjrOffers_Domain_Model_Person('John Doe');
+	    $Person = new \Sjr\SjrOffers\Domain\Model\Person('John Doe');
 		$Person->setTelefaxNumber("+49 (0)711 34556-234");
 		$this->assertEquals("+49 (0)711 34556-234", $Person->getTelefaxNumber());
 	}
@@ -75,7 +77,7 @@ class Tx_SjrOffers_Domain_Model_PersonTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theUrlOfThePersonCanBeSet() {
-	    $Person = new Tx_SjrOffers_Domain_Model_Person('John Doe');
+	    $Person = new \Sjr\SjrOffers\Domain\Model\Person('John Doe');
 		$Person->setUrl("http://www.example.com");
 		$this->assertEquals("http://www.example.com", $Person->getUrl());
 	}
@@ -84,7 +86,7 @@ class Tx_SjrOffers_Domain_Model_PersonTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theEmailAddressOfThePersonCanBeSet() {
-	    $Person = new Tx_SjrOffers_Domain_Model_Person('John Doe');
+	    $Person = new \Sjr\SjrOffers\Domain\Model\Person('John Doe');
 		$Person->setEmailAddress("john.doe@example.com");
 		$this->assertEquals("john.doe@example.com", $Person->getEmailAddress());
 	}

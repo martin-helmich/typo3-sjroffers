@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * Testcase for a numeric range
  */
-class Tx_SjrOffers_Domain_Model_DateRangeTest extends Tx_Extbase_BaseTestCase {
+class DateRangeTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * This is the data provider for minimum and maximum values
@@ -34,8 +36,8 @@ class Tx_SjrOffers_Domain_Model_DateRangeTest extends Tx_Extbase_BaseTestCase {
 	 */
 	public function providerForMinMaxValues() {
 		return array(
-			array(new Tx_SjrOffers_Domain_Model_DateTime('1968-08-01 12:10:35'), new Tx_SjrOffers_Domain_Model_DateTime('2030-10-01 14:15:25')),
-			array(new Tx_SjrOffers_Domain_Model_DateTime('today'), new Tx_SjrOffers_Domain_Model_DateTime('tomorrow')),
+			array(new \Sjr\SjrOffers\Domain\Model\DateTime('1968-08-01 12:10:35'), new \Sjr\SjrOffers\Domain\Model\DateTime('2030-10-01 14:15:25')),
+			array(new \Sjr\SjrOffers\Domain\Model\DateTime('today'), new \Sjr\SjrOffers\Domain\Model\DateTime('tomorrow')),
 			);
 	}
 	
@@ -43,7 +45,7 @@ class Tx_SjrOffers_Domain_Model_DateRangeTest extends Tx_Extbase_BaseTestCase {
 	 * @test
 	 */
 	public function theMinimumAndMaximumValueCanBeSetAtConstructionTime() {
-	    $dateRange = new Tx_SjrOffers_Domain_Model_DateRange(new Tx_SjrOffers_Domain_Model_DateTime('2009-10-01 12:10:35'), new Tx_SjrOffers_Domain_Model_DateTime('2009-10-03 14:15:25'));
+		$dateRange = new \Sjr\SjrOffers\Domain\Model\DateRange(new \Sjr\SjrOffers\Domain\Model\DateTime('2009-10-01 12:10:35'), new \Sjr\SjrOffers\Domain\Model\DateTime('2009-10-03 14:15:25'));
 		$this->assertEquals('2009-10-01 12:10:35', $dateRange->getMinimumValue()->format('Y-m-d H:i:s'));
 		$this->assertEquals('2009-10-03 14:15:25', $dateRange->getMaximumValue()->format('Y-m-d H:i:s'));
 	}
@@ -53,7 +55,7 @@ class Tx_SjrOffers_Domain_Model_DateRangeTest extends Tx_Extbase_BaseTestCase {
 	 * @dataProvider providerForMinMaxValues
 	 */
 	public function theMinimumValueCanBeSet($minimumValue, $maximumValue) {
-	    $dateRange = new Tx_SjrOffers_Domain_Model_DateRange;
+		$dateRange = new \Sjr\SjrOffers\Domain\Model\DateRange;
 		$dateRange->setMinimumValue($minimumValue);
 		$this->assertEquals($minimumValue->format('Y-m-d H:i:s'), $dateRange->getMinimumValue()->format('Y-m-d H:i:s'));
 	}
@@ -63,7 +65,7 @@ class Tx_SjrOffers_Domain_Model_DateRangeTest extends Tx_Extbase_BaseTestCase {
 	 * @dataProvider providerForMinMaxValues
 	 */
 	public function theMaximumValueCanBeSet($minimumValue, $maximumValue) {
-	    $dateRange = new Tx_SjrOffers_Domain_Model_DateRange;
+		$dateRange = new \Sjr\SjrOffers\Domain\Model\DateRange;
 		$dateRange->setMaximumValue($maximumValue);
 		$this->assertEquals($maximumValue->format('Y-m-d H:i:s'), $dateRange->getMaximumValue()->format('Y-m-d H:i:s'));
 	}

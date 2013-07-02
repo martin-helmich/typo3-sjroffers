@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Tests\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,13 +27,13 @@
 /**
  * Testcase for the Organization class
  */
-class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase {
+class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	
 	/**
 	 * @test
 	 */
 	public function anInstanceOfTheOrganizationCanBeConstructed() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$this->assertEquals('Youth Organization', $organization->getName());
 	}
 
@@ -39,7 +41,7 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theNameOfTheOrganizationCanBeSet() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$organization->setName('Another Name');
 		$this->assertEquals('Another Name', $organization->getName());
 	}
@@ -48,7 +50,7 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theAdressOfTheOrganizationCanBeSet() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization;
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization;
 		$organization->setAddress("The first address line\nThe second address line");
 		$this->assertEquals("The first address line\nThe second address line", $organization->getAddress());
 	}
@@ -57,7 +59,7 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theTelephoneNumberOfTheOrganizationCanBeSet() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('John Doe');
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
 		$organization->setTelephoneNumber("+49 (0)711 34556-234");
 		$this->assertEquals("+49 (0)711 34556-234", $organization->getTelephoneNumber());
 	}
@@ -66,7 +68,7 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theTelefaxNumberOfTheOrganizationCanBeSet() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('John Doe');
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
 		$organization->setTelefaxNumber("+49 (0)711 34556-234");
 		$this->assertEquals("+49 (0)711 34556-234", $organization->getTelefaxNumber());
 	}
@@ -75,7 +77,7 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theUrlOfTheOrganizationCanBeSet() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('John Doe');
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
 		$organization->setUrl("http://www.example.com");
 		$this->assertEquals("http://www.example.com", $organization->getUrl());
 	}
@@ -84,7 +86,7 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theEmailAddressOfTheOrganizationCanBeSet() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('John Doe');
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
 		$organization->setEmailAddress("john.doe@example.com");
 		$this->assertEquals("john.doe@example.com", $organization->getEmailAddress());
 	}
@@ -93,7 +95,7 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theDescriptionOfTheOrganizationCanBeSet() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization;
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization;
 		$description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.\nUt enim ad minim veniam, quis nostrud.";
 		$organization->setDescription($description);
 		$this->assertEquals($description, $organization->getDescription());
@@ -103,7 +105,7 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function anImageOfTheOrganizationCanBeSet() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization;
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization;
 		$imageName = 'logo.gif';
 		$organization->setImage($imageName);
 		$this->assertEquals($imageName, $organization->getImage());
@@ -113,8 +115,8 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theContactsAreInitializedAsEmptyObjectStorage() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
-		$this->assertEquals('Tx_Extbase_Persistence_ObjectStorage', get_class($organization->getContacts()));
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($organization->getContacts()));
 		$this->assertEquals(0, count($organization->getContacts()->toArray()));
 	}
 	
@@ -122,8 +124,8 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theContactsCanBeSet() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
-		$mockObjectStorage = $this->getMock('Tx_Extbase_Persistence_ObjectStorage', array('contains'), array(), '', FALSE);
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$mockObjectStorage = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('contains'), array(), '', FALSE);
 		$mockObjectStorage->expects($this->any())->method('contains')->with('foo')->will($this->returnValue(TRUE));		
 		$organization->setContacts($mockObjectStorage);
 		$this->assertTrue($organization->getContacts()->contains('foo'));
@@ -133,8 +135,8 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function aContactCanBeAdded() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
-		$mockContact = $this->getMock('Tx_SjrOffers_Domain_Model_Person');
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$mockContact = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Person');
 		$organization->addContact($mockContact);
 		$this->assertTrue($organization->getContacts()->contains($mockContact));
 	}
@@ -143,8 +145,8 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function aContactCanBeRemoved() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
-		$mockContact = $this->getMock('Tx_SjrOffers_Domain_Model_Person');
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$mockContact = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Person');
 		$organization->addContact($mockContact);
 		$this->assertEquals(1, count($organization->getContacts()->toArray()));
 		$organization->removeContact($mockContact);
@@ -155,20 +157,20 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function allContacsCanBeRetreivedAtOnce() {
-		$mockPerson1 = $this->getMock('Tx_SjrOffers_Domain_Model_Person', array(), array(), '', FALSE);
-		$mockPerson2 = $this->getMock('Tx_SjrOffers_Domain_Model_Person', array(), array(), '', FALSE);
+		$mockPerson1 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Person', array(), array(), '', FALSE);
+		$mockPerson2 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Person', array(), array(), '', FALSE);
 
-		$mockOffer1 = $this->getMock('Tx_SjrOffers_Domain_Model_Offer', array('getContact'), array(), '', FALSE);
+		$mockOffer1 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array('getContact'), array(), '', FALSE);
 		$mockOffer1->expects($this->any())->method('getContact')->will($this->returnValue($mockPerson1));
 		
-		$mockOffer2 = $this->getMock('Tx_SjrOffers_Domain_Model_Offer', array('getContact'), array(), '', FALSE);
+		$mockOffer2 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array('getContact'), array(), '', FALSE);
 		$mockOffer2->expects($this->any())->method('getContact')->will($this->returnValue($mockPerson2));
 
-		$mockObjectStorage1 = $this->getMock('Tx_Extbase_Persistence_ObjectStorage', array('assign'), array(), '', FALSE);
+		$mockObjectStorage1 = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('assign'), array(), '', FALSE);
 		$mockObjectStorage1->expects($this->at(0))->method('assign')->with($mockPerson1);
 		$mockObjectStorage1->expects($this->at(1))->method('assign')->with($mockPerson2);
 
-		$mockOrganization = $this->getMock('Tx_SjrOffers_Domain_Model_Organization', array('getContacts', 'getOffers'), array(), '', FALSE);
+		$mockOrganization = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Organization', array('getContacts', 'getOffers'), array(), '', FALSE);
 		$mockOrganization->expects($this->once())->method('getContacts')->will($this->returnValue($mockObjectStorage1));
 		$mockOrganization->expects($this->once())->method('getOffers')->will($this->returnValue(array($mockOffer1, $mockOffer2)));		
 		
@@ -179,8 +181,8 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theOffersAreInitializedAsEmptyObjectStorage() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
-		$this->assertEquals('Tx_Extbase_Persistence_ObjectStorage', get_class($organization->getOffers()));
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($organization->getOffers()));
 		$this->assertEquals(0, count($organization->getOffers()->toArray()));
 	}
 	
@@ -188,8 +190,8 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function theOffersCanBeSet() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
-		$mockObjectStorage = $this->getMock('Tx_Extbase_Persistence_ObjectStorage', array('contains'), array(), '', FALSE);
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$mockObjectStorage = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('contains'), array(), '', FALSE);
 		$mockObjectStorage->expects($this->any())->method('contains')->with('foo')->will($this->returnValue(TRUE));		
 		$organization->setOffers($mockObjectStorage);
 		$this->assertTrue($organization->getOffers()->contains('foo'));
@@ -199,8 +201,8 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function anOfferCanBeAdded() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
-		$mockOffer = $this->getMock('Tx_SjrOffers_Domain_Model_Offer', array(), array(), '', FALSE);
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$mockOffer = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array(), array(), '', FALSE);
 		$organization->addOffer($mockOffer);
 		$this->assertTrue($organization->getOffers()->contains($mockOffer));
 	}
@@ -209,8 +211,8 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function anOfferCanBeRemoved() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
-		$mockOffer = $this->getMock('Tx_SjrOffers_Domain_Model_Offer', array(), array(), '', FALSE);
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$mockOffer = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array(), array(), '', FALSE);
 		$organization->addOffer($mockOffer);
 		$this->assertEquals(1, count($organization->getOffers()->toArray()));
 		$organization->removeOffer($mockOffer);
@@ -221,17 +223,17 @@ class Tx_SjrOffers_Domain_Model_OrganizationTest extends Tx_Extbase_BaseTestCase
 	 * @test
 	 */
 	public function allOffersCanBeRemovedAtOnce() {
-	    $organization = new Tx_SjrOffers_Domain_Model_Organization('Youth Organization');
-		$mockOffer1 = $this->getMock('Tx_SjrOffers_Domain_Model_Offer', array(), array(), '', FALSE);
-		$mockOffer2 = $this->getMock('Tx_SjrOffers_Domain_Model_Offer', array(), array(), '', FALSE);
-		$mockOffer3 = $this->getMock('Tx_SjrOffers_Domain_Model_Offer', array(), array(), '', FALSE);
+	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$mockOffer1 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array(), array(), '', FALSE);
+		$mockOffer2 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array(), array(), '', FALSE);
+		$mockOffer3 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array(), array(), '', FALSE);
 		$organization->addOffer($mockOffer1);
 		$organization->addOffer($mockOffer2);
 		$organization->addOffer($mockOffer3);
 		$this->assertEquals(3, count($organization->getOffers()->toArray()));
 		$organization->removeAllOffers();
 		$offersAfterDeletion = $organization->getOffers();
-		$this->assertEquals('Tx_Extbase_Persistence_ObjectStorage', get_class($offersAfterDeletion));
+		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($offersAfterDeletion));
 		$this->assertEquals(0, count($offersAfterDeletion->toArray()));
 	}
 	
