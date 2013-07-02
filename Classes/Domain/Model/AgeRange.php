@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * An age range
  */
-class Tx_SjrOffers_Domain_Model_AgeRange extends Tx_SjrOffers_Domain_Model_RangeConstraint implements Tx_SjrOffers_Domain_Model_NumericRangeInterface {
+class AgeRange extends Tx_SjrOffers_Domain_Model_RangeConstraint implements Tx_SjrOffers_Domain_Model_NumericRangeInterface {
 	
 }
 ?>

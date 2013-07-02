@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * A status of an organization
  */
-class Tx_SjrOffers_Domain_Model_Status extends Tx_Extbase_DomainObject_AbstractEntity {
+class Status extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	
 	/**
 	 * @var string The title of the status

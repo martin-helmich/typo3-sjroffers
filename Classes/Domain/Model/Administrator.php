@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,6 +27,6 @@
 /**
  * An Admistrator of an Organization. He manages the Offers and contact data of an Organization.
  */
-class Tx_SjrOffers_Domain_Model_Administrator extends Tx_Extbase_Domain_Model_FrontendUser {
+class Administrator extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 }
 ?>

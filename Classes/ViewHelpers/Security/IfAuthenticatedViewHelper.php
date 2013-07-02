@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\ViewHelpers\Security;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,7 +27,7 @@
 /**
  * View helper for checking access rights.
  */
-class Tx_SjrOffers_ViewHelpers_Security_IfAuthenticatedViewHelper extends Tx_Fluid_ViewHelpers_IfViewHelper {
+class IfAuthenticatedViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\IfViewHelper {
 
 	/**
 	 * Checks, if the given frontend user has access to the given object

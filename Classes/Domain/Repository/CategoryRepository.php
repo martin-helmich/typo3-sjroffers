@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Repository;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,7 +27,7 @@
 /**
  * A repository for Categories
  */
-class Tx_SjrOffers_Domain_Repository_CategoryRepository extends Tx_Extbase_Persistence_Repository {
+class CategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	
 	/**
 	 * Finds all categories that are not marked as internal. Internal categories can be used to attach "hidden" categories.
@@ -40,7 +42,7 @@ class Tx_SjrOffers_Domain_Repository_CategoryRepository extends Tx_Extbase_Persi
 			$constraints[] = $query->in('uid', $selectableCategories);
 		}
 		$query->matching($query->logicalAnd($constraints));
-		$query->setOrderings(array('title' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING));
+		$query->setOrderings(array('title' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
 		return $query->execute();
 	}
 		

@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Service;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -31,7 +33,7 @@
  * @package SjrOffers
  * @version $ID: $
  */
-class Tx_SjrOffers_Service_AccessException extends Exception {
+class AccessException extends \Exception {
 
 }
 ?>

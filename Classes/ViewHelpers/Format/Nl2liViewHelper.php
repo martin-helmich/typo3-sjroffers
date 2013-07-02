@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\ViewHelpers\Format;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -40,7 +42,7 @@
  * @api
  * @scope prototype
  */
-class Tx_SjrOffers_ViewHelpers_Format_Nl2liViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class Nl2liViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * Replaces newline characters by HTML line breaks.

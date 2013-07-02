@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Controller;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -28,7 +30,7 @@
  * @version $Id:$
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License, version 2
  */
-class Tx_SjrOffers_Controller_OrganizationController extends Tx_Extbase_MVC_Controller_ActionController {
+class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController {
 
 	/**
 	 * @var Tx_SjrOffers_Domain_Model_OrganizationRepository

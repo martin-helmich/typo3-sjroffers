@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * An attendance range
  */
-class Tx_SjrOffers_Domain_Model_AttendanceRange extends Tx_SjrOffers_Domain_Model_RangeConstraint implements Tx_SjrOffers_Domain_Model_NumericRangeInterface {
+class AttendanceRange extends Tx_SjrOffers_Domain_Model_RangeConstraint implements Tx_SjrOffers_Domain_Model_NumericRangeInterface {
 	
 }
 ?>

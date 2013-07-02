@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,6 +27,6 @@
 /**
  * A Decorator for the PHP DateTime object 
  */
-class Tx_SjrOffers_Domain_Model_DateTime extends DateTime {
+class DateTime extends DateTime {
 }
 ?>

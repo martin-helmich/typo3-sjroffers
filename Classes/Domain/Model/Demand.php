@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * An Offer
  */
-class Tx_SjrOffers_Domain_Model_Demand extends Tx_Extbase_DomainObject_AbstractEntity {
+class Demand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	
 	/**
 	 * @var Tx_SjrOffers_Domain_Model_Organization The demanded organization

@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * A date range specifying the period an offer is valid
  */
-class Tx_SjrOffers_Domain_Model_DateRange extends Tx_SjrOffers_Domain_Model_RangeConstraint implements Tx_SjrOffers_Domain_Model_DateRangeInterface {
+class DateRange extends Tx_SjrOffers_Domain_Model_RangeConstraint implements Tx_SjrOffers_Domain_Model_DateRangeInterface {
 
 	/**
 	 * @var Tx_SjrOffers_Domain_Model_DateTime The minimum value

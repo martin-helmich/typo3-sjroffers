@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * An Contact
  */
-class Tx_SjrOffers_Domain_Model_Person extends Tx_Extbase_DomainObject_AbstractEntity {
+class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	
 	/**
 	 * @var string The name of the contact

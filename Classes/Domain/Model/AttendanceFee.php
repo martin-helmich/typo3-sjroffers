@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Model;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +27,7 @@
 /**
  * An amount
  */
-class Tx_SjrOffers_Domain_Model_AttendanceFee extends Tx_Extbase_DomainObject_AbstractEntity {
+class AttendanceFee extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	
 	/**
 	 * @var string The amount.

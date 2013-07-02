@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\ViewHelpers\Format;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,7 +27,7 @@
 /**
  * View helper for rendering contraints.
  */
-class Tx_SjrOffers_ViewHelpers_Format_NumericRangeViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class NumericRangeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * Render the supplied range as formatted string

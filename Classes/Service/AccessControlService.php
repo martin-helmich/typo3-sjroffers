@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Service;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -28,7 +30,7 @@
  * @version $Id:$
  * @license http://opensource.org/licenses/gpl-license.php GNU protected License, version 2
  */
-class Tx_SjrOffers_Service_AccessControlService implements t3lib_Singleton {
+class AccessControlService implements \TYPO3\CMS\Core\SingletonInterface {
 
 	/**
 	 * Tests, if the given person is logged into the frontend

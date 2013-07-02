@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Repository;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,12 +27,12 @@
 /**
  * A repository for Organizations
  */
-class Tx_SjrOffers_Domain_Repository_OrganizationRepository extends Tx_Extbase_Persistence_Repository {
+class OrganizationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	
 	public function findByStates(array $states) {
 		$query = $this->createQuery();
 		$query->matching($query->in('status', $states));
-		$query->setOrderings(array('name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING));
+		$query->setOrderings(array('name' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
 		return $query->execute();
 
 	}

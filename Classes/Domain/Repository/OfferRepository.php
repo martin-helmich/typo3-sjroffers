@@ -1,4 +1,6 @@
 <?php
+namespace Sjr\SjrOffers\Domain\Repository;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,7 +27,7 @@
 /**
  * A repository for Offers
  */
-class Tx_SjrOffers_Domain_Repository_OfferRepository extends Tx_Extbase_Persistence_Repository {
+class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	
 	/**
 	 * Finds all offers that are offerd by the given organization
@@ -40,8 +42,8 @@ class Tx_SjrOffers_Domain_Repository_OfferRepository extends Tx_Extbase_Persiste
 			);
 		$query->setOrderings(
 			array(
-				'dateRange.minimumValue' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-				'dateRange.maximumValue' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+				'dateRange.minimumValue' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+				'dateRange.maximumValue' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
 				)
 			);
 		return $query->execute();
@@ -104,8 +106,8 @@ class Tx_SjrOffers_Domain_Repository_OfferRepository extends Tx_Extbase_Persiste
 		}
 		$query->setOrderings(
 			array(
-				'dateRange.minimumValue' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
-				'dateRange.maximumValue' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+				'dateRange.minimumValue' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+				'dateRange.maximumValue' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
 				)
 			);
 		
