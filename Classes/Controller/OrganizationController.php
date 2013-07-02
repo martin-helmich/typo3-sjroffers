@@ -87,7 +87,7 @@ class OrganizationController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionCon
 			$allowedStates = (strlen($this->settings['allowedStates']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['allowedStates']) : array();
 			$listCategories = (strlen($this->settings['listCategories']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['listCategories']) : array();
 			$contacts = $organization->getContacts();
-			$demand = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\Sjr\SjrOffers\Domain\Model\Demand');
+			$demand = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\\Sjr\\SjrOffers\\Domain\\Model\\Demand');
 			$demand->setOrganization($organization);
 			$this->view->assign('offers', $this->offerRepository->findDemanded(
 				$demand,
