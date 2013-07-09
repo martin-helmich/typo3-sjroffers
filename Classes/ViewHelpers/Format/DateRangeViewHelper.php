@@ -42,11 +42,11 @@ class DateRangeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewH
 		}
 		if ($range instanceof \Sjr\SjrOffers\Domain\Model\DateRangeInterface) {
 			$minimumValue = $range->getMinimumValue();
-			if ($minimumValue instanceof DateTime) {
+			if ($minimumValue instanceof \DateTime) {
 				$plainMinimumValue = $minimumValue->format('U');
 			}
 			$maximumValue = $range->getMaximumValue();
-			if ($maximumValue instanceof DateTime) {
+			if ($maximumValue instanceof \DateTime) {
 				$plainMaximumValue = $maximumValue->format('U');
 			}
 			if (empty($plainMinimumValue) && empty($plainMaximumValue)) {

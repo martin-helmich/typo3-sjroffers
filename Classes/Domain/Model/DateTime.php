@@ -27,6 +27,6 @@ namespace Sjr\SjrOffers\Domain\Model;
 /**
  * A Decorator for the PHP DateTime object 
  */
-class DateTime extends DateTime {
+class DateTime extends \DateTime {
 }
 ?>

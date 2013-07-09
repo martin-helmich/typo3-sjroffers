@@ -47,7 +47,7 @@ class DateRange extends \Sjr\SjrOffers\Domain\Model\RangeConstraint implements \
 	 * @return int The normalized value
 	 */
 	public function normalizeValue($value = NULL) {
-		if (!($value instanceof DateTime)) {
+		if (!($value instanceof \Sjr\SjrOffers\Domain\Model\DateTime)) {
 			$value = NULL;
 		}
 		return $value;
