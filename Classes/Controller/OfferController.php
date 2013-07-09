@@ -30,7 +30,7 @@ namespace Sjr\SjrOffers\Controller;
  * @version $Id:$
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License, version 2
  */
-class OfferController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController {
+class OfferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * @var \Sjr\SjrOffers\Domain\Model\OfferRepository
