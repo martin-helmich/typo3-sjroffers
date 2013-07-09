@@ -33,7 +33,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function anInstanceOfTheOfferCanBeConstructed() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer('A title of an offer');
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer('A title of an offer');
 		$this->assertEquals('A title of an offer', $offer->getTitle());
 	}
 
@@ -41,7 +41,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theTitleOfTheOfferCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer('A title of an offer');
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer('A title of an offer');
 		$title = 'Another Name';
 		$offer->setTitle($title);
 		$this->assertEquals($title, $offer->getTitle());
@@ -51,7 +51,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theTeaserOfTheOfferCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer('A title of an offer');
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer('A title of an offer');
 		$teaser = 'Lorem ipsum dolor sit amet';
 		$offer->setTeaser($teaser);
 		$this->assertEquals($teaser, $offer->getTeaser());
@@ -61,7 +61,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theDescriptionOfTheOfferCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.\nUt enim ad minim veniam, quis nostrud.";
 		$offer->setDescription($description);
 		$this->assertEquals($description, $offer->getDescription());
@@ -71,7 +71,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theServicesOfTheOfferCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$services = "Lorem ipsum dolor sit amet\nConsectetur adipisicing elit\nUt enim ad minim veniam";
 		$offer->setServices($services);
 		$this->assertEquals($services, $offer->getServices());
@@ -81,7 +81,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theDatesOfTheOfferCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$dates = "Mo, Mi und Fr, jeweils 8-12 Uhr\nDo 7-14 Uhr";
 		$offer->setDates($dates);
 		$this->assertEquals($dates, $offer->getDates());
@@ -91,7 +91,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theVenueOfTheOfferCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$venue = "Südgemeindehaus\n2.Stock, Zi. 213";
 		$offer->setVenue($venue);
 		$this->assertEquals($venue, $offer->getVenue());
@@ -101,7 +101,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function anImageOfTheOfferCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$imageName = 'image.gif';
 		$offer->setImage($imageName);
 		$this->assertEquals($imageName, $offer->getImage());
@@ -111,7 +111,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theAgeRangeOfTheOfferCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockAgeRange = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\AgeRange');
 		$offer->setAgeRange($mockAgeRange);
 		$this->assertEquals($mockAgeRange, $offer->getAgeRange());
@@ -121,7 +121,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theDateRangeOfTheOfferCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockDateRange = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\DateRange');
 		$offer->setDateRange($mockDateRange);
 		$this->assertEquals($mockDateRange, $offer->getDateRange());
@@ -131,7 +131,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theAttendanceRangeOfTheOfferCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockAttendanceRange = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\AttendanceRange');
 		$offer->setAttendanceRange($mockAttendanceRange);
 		$this->assertEquals($mockAttendanceRange, $offer->getAttendanceRange());
@@ -141,8 +141,8 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theAttendanceFeesIsInitializedAsEmptyObjectStorage() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
-		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($offer->getAttendanceFees()));
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$this->assertInstanceOf('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', $offer->getAttendanceFees());
 		$this->assertEquals(0, count($offer->getAttendanceFees()->toArray()));
 	}
 	
@@ -150,7 +150,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theAttendanceFeesCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockObjectStorage = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('contains'), array(), '', FALSE);
 		$mockObjectStorage->expects($this->any())->method('contains')->with('foo')->will($this->returnValue(TRUE));		
 		$offer->setAttendanceFees($mockObjectStorage);
@@ -161,7 +161,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function anAttendanceFeeCanBeAdded() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockAttendanceFee = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\AttendanceFee');
 		$offer->addAttendanceFee($mockAttendanceFee);
 		$this->assertTrue($offer->getAttendanceFees()->contains($mockAttendanceFee));
@@ -171,7 +171,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function anAttendanceFeeCanBeRemoved() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockAttendanceFee = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\AttendanceFee');
 		$offer->addAttendanceFee($mockAttendanceFee);
 		$this->assertEquals(1, count($offer->getAttendanceFees()->toArray()));
@@ -183,7 +183,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theContactCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockContact = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Person');
 		$offer->setContact($mockContact);
 		$this->assertTrue($mockContact === $offer->getContact());
@@ -193,8 +193,8 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theCategoriesAreInitializedAsEmptyObjectStorage() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
-		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($offer->getCategories()));
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$this->assertInstanceOf('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', $offer->getCategories());
 		$this->assertEquals(0, count($offer->getCategories()->toArray()));
 	}
 	
@@ -202,7 +202,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theCategoriesCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockObjectStorage = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('contains'), array(), '', FALSE);
 		$mockObjectStorage->expects($this->any())->method('contains')->with('foo')->will($this->returnValue(TRUE));		
 		$offer->setCategories($mockObjectStorage);
@@ -213,7 +213,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function aCategoryCanBeAdded() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockCategory = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Category');
 		$offer->addCategory($mockCategory);
 		$this->assertTrue($offer->getCategories()->contains($mockCategory));
@@ -223,7 +223,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function aCategoryCanBeRemoved() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockCategory = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Category');
 		$offer->addCategory($mockCategory);
 		$this->assertEquals(1, count($offer->getCategories()->toArray()));
@@ -235,8 +235,8 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theRegionsAreInitializedAsEmptyObjectStorage() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
-		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($offer->getRegions()));
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$this->assertInstanceOf('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', $offer->getRegions());
 		$this->assertEquals(0, count($offer->getRegions()->toArray()));
 	}
 		
@@ -244,7 +244,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theRegionsCanBeSet() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockObjectStorage = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('contains'), array(), '', FALSE);
 		$mockObjectStorage->expects($this->any())->method('contains')->with('foo')->will($this->returnValue(TRUE));		
 		$offer->setRegions($mockObjectStorage);
@@ -255,7 +255,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function aRegionCanBeAdded() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockRegion = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Region');
 		$offer->addRegion($mockRegion);
 		$this->assertTrue($offer->getRegions()->contains($mockRegion));
@@ -265,7 +265,7 @@ class OfferTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function aRegionCanBeRemoved() {
-	    $offer = new \Sjr\SjrOffers\Domain\Model\Offer;
+		$offer = new \Sjr\SjrOffers\Domain\Model\Offer;
 		$mockRegion = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Region');
 		$offer->addRegion($mockRegion);
 		$this->assertEquals(1, count($offer->getRegions()->toArray()));

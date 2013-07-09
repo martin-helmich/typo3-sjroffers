@@ -51,6 +51,15 @@ class Region extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	public function getName() {
 		return $this->name;
 	}
+
+	/**
+	 * Sets the name of the region.
+	 *
+	 * @param string $region The name of the region.
+	 */
+	public function setName($name) {
+		$this->name = $name;
+	}
 	
 	/**
 	 * Converts the value object to a string reprsentation

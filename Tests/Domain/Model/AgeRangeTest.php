@@ -39,8 +39,7 @@ class AgeRangeTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 			array(0, 2),
 			array(2, 6),
 			array(0, PHP_INT_MAX),
-			array(-PHP_INT_MAX, PHP_INT_MAX),
-			);
+		);
 	}
 	
 	/**

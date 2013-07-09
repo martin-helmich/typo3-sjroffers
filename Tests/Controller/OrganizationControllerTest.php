@@ -33,8 +33,8 @@ class OrganizationControllerTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestC
 	 * @test
 	 */
 	public function indexActionWorks() {
-		$mockOrganizationRepository = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Repository\\OrganizationRepository', array('findAll'), array(), '', FALSE);		
-		$mockOrganizationRepository->expects($this->once())->method('findAll')->will($this->returnValue(array('organization1', 'organization2')));
+		$mockOrganizationRepository = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Repository\\OrganizationRepository', array(), array(), '', FALSE);
+		$mockOrganizationRepository->expects($this->once())->method('findByStates')->will($this->returnValue(array('organization1', 'organization2')));
 
 		$mockView = $this->getMock('\\TYPO3\\CMS\\Fluid\\Core\\View\\TemplateView', array('assign'), array(), '', FALSE);
 		$mockView->expects($this->once())->method('assign')->with('organizations', array('organization1', 'organization2'));

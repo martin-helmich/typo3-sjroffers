@@ -33,7 +33,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function anInstanceOfTheOrganizationCanBeConstructed() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$this->assertEquals('Youth Organization', $organization->getName());
 	}
 
@@ -41,7 +41,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theNameOfTheOrganizationCanBeSet() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$organization->setName('Another Name');
 		$this->assertEquals('Another Name', $organization->getName());
 	}
@@ -50,7 +50,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theAdressOfTheOrganizationCanBeSet() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization;
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization;
 		$organization->setAddress("The first address line\nThe second address line");
 		$this->assertEquals("The first address line\nThe second address line", $organization->getAddress());
 	}
@@ -59,7 +59,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theTelephoneNumberOfTheOrganizationCanBeSet() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
 		$organization->setTelephoneNumber("+49 (0)711 34556-234");
 		$this->assertEquals("+49 (0)711 34556-234", $organization->getTelephoneNumber());
 	}
@@ -68,7 +68,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theTelefaxNumberOfTheOrganizationCanBeSet() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
 		$organization->setTelefaxNumber("+49 (0)711 34556-234");
 		$this->assertEquals("+49 (0)711 34556-234", $organization->getTelefaxNumber());
 	}
@@ -77,7 +77,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theUrlOfTheOrganizationCanBeSet() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
 		$organization->setUrl("http://www.example.com");
 		$this->assertEquals("http://www.example.com", $organization->getUrl());
 	}
@@ -86,7 +86,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theEmailAddressOfTheOrganizationCanBeSet() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('John Doe');
 		$organization->setEmailAddress("john.doe@example.com");
 		$this->assertEquals("john.doe@example.com", $organization->getEmailAddress());
 	}
@@ -95,7 +95,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theDescriptionOfTheOrganizationCanBeSet() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization;
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization;
 		$description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.\nUt enim ad minim veniam, quis nostrud.";
 		$organization->setDescription($description);
 		$this->assertEquals($description, $organization->getDescription());
@@ -105,7 +105,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function anImageOfTheOrganizationCanBeSet() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization;
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization;
 		$imageName = 'logo.gif';
 		$organization->setImage($imageName);
 		$this->assertEquals($imageName, $organization->getImage());
@@ -115,8 +115,8 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theContactsAreInitializedAsEmptyObjectStorage() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
-		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($organization->getContacts()));
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$this->assertInstanceOf('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', $organization->getContacts());
 		$this->assertEquals(0, count($organization->getContacts()->toArray()));
 	}
 	
@@ -124,7 +124,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theContactsCanBeSet() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$mockObjectStorage = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('contains'), array(), '', FALSE);
 		$mockObjectStorage->expects($this->any())->method('contains')->with('foo')->will($this->returnValue(TRUE));		
 		$organization->setContacts($mockObjectStorage);
@@ -135,7 +135,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function aContactCanBeAdded() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$mockContact = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Person');
 		$organization->addContact($mockContact);
 		$this->assertTrue($organization->getContacts()->contains($mockContact));
@@ -145,7 +145,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function aContactCanBeRemoved() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$mockContact = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Person');
 		$organization->addContact($mockContact);
 		$this->assertEquals(1, count($organization->getContacts()->toArray()));
@@ -156,7 +156,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
-	public function allContacsCanBeRetreivedAtOnce() {
+	public function allContactsCanBeRetrievedAtOnce() {
 		$mockPerson1 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Person', array(), array(), '', FALSE);
 		$mockPerson2 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Person', array(), array(), '', FALSE);
 
@@ -166,9 +166,9 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 		$mockOffer2 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array('getContact'), array(), '', FALSE);
 		$mockOffer2->expects($this->any())->method('getContact')->will($this->returnValue($mockPerson2));
 
-		$mockObjectStorage1 = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('assign'), array(), '', FALSE);
-		$mockObjectStorage1->expects($this->at(0))->method('assign')->with($mockPerson1);
-		$mockObjectStorage1->expects($this->at(1))->method('assign')->with($mockPerson2);
+		$mockObjectStorage1 = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
+		$mockObjectStorage1->expects($this->at(0))->method('attach')->with($this->identicalTo($mockPerson1));
+		$mockObjectStorage1->expects($this->at(1))->method('attach')->with($this->identicalTo($mockPerson2));
 
 		$mockOrganization = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Organization', array('getContacts', 'getOffers'), array(), '', FALSE);
 		$mockOrganization->expects($this->once())->method('getContacts')->will($this->returnValue($mockObjectStorage1));
@@ -181,8 +181,8 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theOffersAreInitializedAsEmptyObjectStorage() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
-		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($organization->getOffers()));
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$this->assertInstanceOf('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', $organization->getOffers());
 		$this->assertEquals(0, count($organization->getOffers()->toArray()));
 	}
 	
@@ -190,7 +190,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function theOffersCanBeSet() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$mockObjectStorage = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('contains'), array(), '', FALSE);
 		$mockObjectStorage->expects($this->any())->method('contains')->with('foo')->will($this->returnValue(TRUE));		
 		$organization->setOffers($mockObjectStorage);
@@ -201,7 +201,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function anOfferCanBeAdded() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$mockOffer = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array(), array(), '', FALSE);
 		$organization->addOffer($mockOffer);
 		$this->assertTrue($organization->getOffers()->contains($mockOffer));
@@ -211,7 +211,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function anOfferCanBeRemoved() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$mockOffer = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array(), array(), '', FALSE);
 		$organization->addOffer($mockOffer);
 		$this->assertEquals(1, count($organization->getOffers()->toArray()));
@@ -223,7 +223,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 * @test
 	 */
 	public function allOffersCanBeRemovedAtOnce() {
-	    $organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
+		$organization = new \Sjr\SjrOffers\Domain\Model\Organization('Youth Organization');
 		$mockOffer1 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array(), array(), '', FALSE);
 		$mockOffer2 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array(), array(), '', FALSE);
 		$mockOffer3 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array(), array(), '', FALSE);
@@ -233,7 +233,7 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 		$this->assertEquals(3, count($organization->getOffers()->toArray()));
 		$organization->removeAllOffers();
 		$offersAfterDeletion = $organization->getOffers();
-		$this->assertEquals('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', get_class($offersAfterDeletion));
+		$this->assertInstanceOf('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', $offersAfterDeletion);
 		$this->assertEquals(0, count($offersAfterDeletion->toArray()));
 	}
 	
