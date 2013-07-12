@@ -33,7 +33,7 @@ namespace Sjr\SjrOffers\Controller;
 class OfferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
-	 * @var \Sjr\SjrOffers\Domain\Model\OfferRepository
+	 * @var \Sjr\SjrOffers\Domain\Repository\OfferRepository
 	 * @inject
 	 */
 	protected $offerRepository;
