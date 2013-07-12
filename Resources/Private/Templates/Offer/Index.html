@@ -14,8 +14,8 @@
 	<f:form class="tx-sjroffers-form" method="post" action="index" name="demand" object="{demand}">
 		<tr>
 			<td valign="top" ><noscript><f:form.submit value="Jetzt Filtern ->"/></noscript></td>
-			<td valign="top" ><f:form.textbox id="searchWord" property="searchWord" style="width: 90%;" additionalAttributes="{onChange : 'document.demand.submit();'}" /></td>
-			<td valign="top" ><f:form.textbox id="age" property="age" size="4" additionalAttributes="{onChange : 'document.demand.submit();'}" /></td>
+			<td valign="top" ><f:form.textfield id="searchWord" property="searchWord" style="width: 90%;" additionalAttributes="{onChange : 'document.demand.submit();'}" /></td>
+			<td valign="top" ><f:form.textfield id="age" property="age" size="4" additionalAttributes="{onChange : 'document.demand.submit();'}" /></td>
 			<td valign="top" >
 				<f:form.select id="categories" property="category" options="{categories}" optionValueField="uid" style="width: 90%;" additionalAttributes="{onChange : 'document.demand.submit();'}"><select><option>###dummy###</option></select></f:form.select><br />
 				<f:form.select id="regions" property="region" options="{regions}" style="width: 90%;" additionalAttributes="{onChange : 'document.demand.submit();'}"><select><option>###dummy###</option></select></f:form.select>

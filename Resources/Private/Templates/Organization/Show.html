@@ -30,19 +30,19 @@
 					<f:render partial="formErrors" arguments="{formName: 'person'}" />
 					<f:form class="tx-sjroffers-form toggleForm" style="display: none;" method="post" action="updateContact" controller="Organization" name="contact" object="{contact}" arguments="{organization: organization}">
 						<label for="name">Name</label>
-						<f:form.textbox property="name" size="46" /><br />
+						<f:form.textfield property="name" size="46" /><br />
 						<label for="role">Zuständigkeit, Aufgabengebiet</label>
-						<f:form.textbox property="role" size="46" /><br />
+						<f:form.textfield property="role" size="46" /><br />
 						<label for="address">Adresse</label>
 						<f:form.textarea property="address" rows="6" cols="46" /><br />
 						<label for="telephoneNumber">Telefon</label>
-						<f:form.textbox property="telephoneNumber" size="46" /><br />
+						<f:form.textfield property="telephoneNumber" size="46" /><br />
 						<label for="telefaxNumber">Telefax</label>
-						<f:form.textbox property="telefaxNumber" size="46" /><br />
+						<f:form.textfield property="telefaxNumber" size="46" /><br />
 						<label for="emailAddress">E-Mail</label>
-						<f:form.textbox property="emailAddress" size="46" /><br />
+						<f:form.textfield property="emailAddress" size="46" /><br />
 						<label for="url">Homepage</label>
-						<f:form.textbox property="url" size="46" /><br />
+						<f:form.textfield property="url" size="46" /><br />
 						<f:form.submit value="Änderungen speichern"/>
 					</f:form>
 				</sjr:security.ifAuthenticated>
@@ -56,19 +56,19 @@
 		<f:form class="tx-sjroffers-form" id="toggleForm" style="display: none;" method="post" controller="Organization" action="createContact" name="newContact" object="{newContact}" arguments="{organization: organization}">
 			<f:render partial="formErrors" arguments="{formName: 'newContact'}" />
 			<label for="name">Name</label>
-			<f:form.textbox property="name" size="46" /><br />
+			<f:form.textfield property="name" size="46" /><br />
 			<label for="role">Zuständigkeit, Aufgabengebiet</label>
-			<f:form.textbox property="role" size="46" /><br />
+			<f:form.textfield property="role" size="46" /><br />
 			<label for="address">Adresse</label>
 			<f:form.textarea property="address" rows="6" cols="46" /><br />
 			<label for="telephoneNumber">Telefon</label>
-			<f:form.textbox property="telephoneNumber" size="46" /><br />
+			<f:form.textfield property="telephoneNumber" size="46" /><br />
 			<label for="telefaxNumber">Telefax</label>
-			<f:form.textbox property="telefaxNumber" size="46" /><br />
+			<f:form.textfield property="telefaxNumber" size="46" /><br />
 			<label for="emailAddress">E-Mail</label>
-			<f:form.textbox property="emailAddress" size="46" /><br />
+			<f:form.textfield property="emailAddress" size="46" /><br />
 			<label for="url">Homepage</label>
-			<f:form.textbox property="url" size="46" /><br />
+			<f:form.textfield property="url" size="46" /><br />
 			<f:form.submit value="Kontakt anlegen"/>
 		</f:form>
 	</sjr:security.ifAuthenticated>
