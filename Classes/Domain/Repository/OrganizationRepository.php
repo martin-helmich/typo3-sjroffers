@@ -31,10 +31,11 @@ class OrganizationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	
 	public function findByStates(array $states) {
 		$query = $this->createQuery();
-		$query->matching($query->in('status', $states));
+		if (count($states) > 0) {
+			$query->matching($query->in('status', $states));
+		}
 		$query->setOrderings(array('name' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
 		return $query->execute();
-
 	}
 
 }

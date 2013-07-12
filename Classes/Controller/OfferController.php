@@ -84,19 +84,19 @@ class OfferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		$this->view->assign('organizations',
 			array_merge(
 				array(0 => 'Alle Organisationen'),
-				$this->organizationRepository->findByStates($allowedStates)
+				$this->organizationRepository->findByStates($allowedStates)->toArray()
 			)
 		);
 		$this->view->assign('categories',
 			array_merge(
 				array(0 => 'Alle Kategorien'),
-				$this->categoryRepository->findSelectableCategories($selectableCategories)
+				$this->categoryRepository->findSelectableCategories($selectableCategories)->toArray()
 			)
 		);
 		$this->view->assign('regions',
 			array_merge(
 				array(0 => 'Alle Stadtteile'),
-				$this->regionRepository->findAll()
+				$this->regionRepository->findAll()->toArray()
 			)
 		);
 		$this->view->assign('offers',
