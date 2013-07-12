@@ -33,7 +33,7 @@ namespace Sjr\SjrOffers\Domain\Validator;
  * @package sjr_offers
  * @scope prototype
  */
-class AmountValidator extends \TYPO3\CMS\Extbase\Validator\AbstractValidator\AbstractValidator {
+class AmountValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator {
 
 	/**
 	 * Returns TRUE, if the given value is a valid amount.

@@ -33,7 +33,7 @@ namespace Sjr\SjrOffers\Domain\Validator;
  * @package sjr_offers
  * @scope prototype
  */
-class RangeConstraintValidator extends \TYPO3\CMS\Extbase\Validator\AbstractValidator\AbstractValidator {
+class RangeConstraintValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator {
 
 	/**
 	 * Checks if  the minimum value is not greater than the maximum value.

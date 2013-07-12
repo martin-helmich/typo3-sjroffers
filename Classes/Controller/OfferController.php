@@ -75,31 +75,43 @@ class OfferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	 * @return string The rendered HTML string
 	 */
 	public function indexAction(\Sjr\SjrOffers\Domain\Model\Demand $demand = NULL) {
-		$allowedStates = (strlen($this->settings['allowedStates']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['allowedStates']) : array();
-		$listCategories = (strlen($this->settings['listCategories']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['listCategories']) : array();
-		$selectableCategories = (strlen($this->settings['selectableCategories']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['selectableCategories']) : array();
-		$propertiesToSearch = (strlen($this->settings['propertiesToSearch']) > 0) ? \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $this->settings['propertiesToSearch']) : array();
+		$allowedStates = (strlen($this->settings['allowedStates']) > 0)
+			? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['allowedStates'])
+			: array();
+		$listCategories = (strlen($this->settings['listCategories']) > 0)
+			? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['listCategories'])
+			: array();
+		$selectableCategories = (strlen($this->settings['selectableCategories']) > 0)
+			? \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['selectableCategories'])
+			: array();
+		$propertiesToSearch = (strlen($this->settings['propertiesToSearch']) > 0)
+			? \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $this->settings['propertiesToSearch'])
+			: array();
 
 		$this->view->assign('demand', $demand);
-		$this->view->assign('organizations',
+		$this->view->assign(
+			'organizations',
 			array_merge(
 				array(0 => 'Alle Organisationen'),
 				$this->organizationRepository->findByStates($allowedStates)->toArray()
 			)
 		);
-		$this->view->assign('categories',
+		$this->view->assign(
+			'categories',
 			array_merge(
 				array(0 => 'Alle Kategorien'),
 				$this->categoryRepository->findSelectableCategories($selectableCategories)->toArray()
 			)
 		);
-		$this->view->assign('regions',
+		$this->view->assign(
+			'regions',
 			array_merge(
 				array(0 => 'Alle Stadtteile'),
 				$this->regionRepository->findAll()->toArray()
 			)
 		);
-		$this->view->assign('offers',
+		$this->view->assign(
+			'offers',
 			$this->offerRepository->findDemanded(
 				$demand,
 				$propertiesToSearch,

@@ -2,7 +2,7 @@
 if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	$_EXTKEY,
+	'Sjr.' . $_EXTKEY,
 	'List',
 	array(
 		'Offer' => 'index, show, new, create, edit, update, delete, createContact, setContact, updateContact, removeContact',
@@ -17,7 +17,7 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	$_EXTKEY,
+	'Sjr.' . $_EXTKEY,
 	'Organizations',
 	array(	 
 		'Offer' => 'index,show,new,create,edit,update,delete,createContact,setContact,updateContact,removeContact',
@@ -32,7 +32,7 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 	);
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	$_EXTKEY,
+	'Sjr.' . $_EXTKEY,
 	'Admin',
 	array(	 
 		'Organization' => 'edit,update,populate,deleteAll', 
