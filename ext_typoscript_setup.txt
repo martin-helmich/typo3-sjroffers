@@ -2,10 +2,10 @@ config.tx_extbase {
 	persistence {
 		storagePid = {$plugin.tx_sjroffers.persistence.storagePid}
 		classes {
-			\Sjr\SjrOffers\Domain\Model\Administrator {
+			Sjr\SjrOffers\Domain\Model\Administrator {
 				mapping {
 					tableName = fe_users
-					recordType = \Sjr\SjrOffers\Domain\Model\Administrator
+					recordType = Sjr\SjrOffers\Domain\Model\Administrator
 				}
 			}
 		}
