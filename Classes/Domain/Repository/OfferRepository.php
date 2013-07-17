@@ -144,7 +144,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		);
 
 		$query->matching($query->logicalAnd(array_merge($constraints, array($dateConstraint))));
-		$scheduledOffers = $query->execute();
+		$scheduledOffers = $query->execute()->toArray();
 		
 		$dateConstraint = $query->logicalOr(
 			$query->equals('dateRange', NULL), 
@@ -161,11 +161,11 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			)
 			);
 		$query->matching($query->logicalAnd(array_merge($constraints, array($dateConstraint))));
-		$yearRoundOffers = $query->execute();
+		$yearRoundOffers = $query->execute()->toArray();
 
 		return array_merge(
-			$scheduledOffers->toArray(),
-			$yearRoundOffers->toArray()
+			$scheduledOffers,
+			$yearRoundOffers
 		);
 	}
 	
