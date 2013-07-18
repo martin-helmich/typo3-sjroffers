@@ -1,4 +1,5 @@
 {namespace sjr=Sjr\SjrOffers\ViewHelpers}
+<f:layout name="default" />
 <f:section name="content">
 	<sjr:security.ifAuthenticated person="{organization.administrator}">
 		<f:then>
@@ -33,7 +34,7 @@
 				<label for="categories">Kategorien <a href="#" onclick="document.newOffer['categories'].selectedIndex=-1; return false;">(alles abwählen)</a></label>
 				<f:form.select id="categories" property="categories" options="{organization.status.allowedCategories}" optionValueField="uid" multiple="multiple" size="5" style="width: 20em;"><select><option>###dummy###</option></select></f:form.select><br />
 				<label for="regions">Stadtteile <a href="#" onclick="document.newOffer['regions'].selectedIndex=-1; return false;">(alles abwählen)</a></label>
-				<f:form.select id="regions" property="regions" options="{regions}" optionValueField="uid" multiple="multiple" selectAll="true" size="20" style="width: 20em;"><select><option>###dummy###</option></select></f:form.select><br />
+				<f:form.select id="regions" property="regions" options="{regions}" optionValueField="uid" multiple="multiple" selectAllByDefault="true" size="20" style="width: 20em;"><select><option>###dummy###</option></select></f:form.select><br />
 
 				<f:form.submit value="Speichern"/>
 			</f:form>
