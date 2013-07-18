@@ -27,7 +27,7 @@
 				</sjr:security.ifAuthenticated>
 				<f:render partial="contact" arguments="{contact : contact}" />
 				<sjr:security.ifAuthenticated person="{organization.administrator}">
-					<f:render partial="formErrors" arguments="{formName: 'person'}" />
+					<f:render partial="FormErrors" arguments="{formName: 'person'}" />
 					<f:form class="tx-sjroffers-form toggleForm" style="display: none;" method="post" action="updateContact" controller="Organization" name="contact" object="{contact}" arguments="{organization: organization}">
 						<label for="name">Name</label>
 						<f:form.textfield property="name" size="46" /><br />
@@ -54,7 +54,7 @@
 	<sjr:security.ifAuthenticated person="{organization.administrator}">
 		<a href="#" id="toggleButton"><f:image src="EXT:sjr_offers/Resources/Public/Icons/new_record.gif" alt="new" />&nbsp;Neue Kontaktperson</a>
 		<f:form class="tx-sjroffers-form" id="toggleForm" style="display: none;" method="post" controller="Organization" action="createContact" name="newContact" object="{newContact}" arguments="{organization: organization}">
-			<f:render partial="formErrors" arguments="{formName: 'newContact'}" />
+			<f:render partial="FormErrors" arguments="{formName: 'newContact'}" />
 			<label for="name">Name</label>
 			<f:form.textfield property="name" size="46" /><br />
 			<label for="role">Zuständigkeit, Aufgabengebiet</label>

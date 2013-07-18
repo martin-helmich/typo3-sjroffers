@@ -2,7 +2,7 @@
 <f:section name="content">
 	<sjr:security.ifAuthenticated person="{offer.organization.administrator}">
 		<f:then>
-			<f:render partial="formErrors" arguments="{formName: 'offer'}" />
+			<f:render partial="FormErrors" arguments="{formName: 'offer'}" />
 			<f:form class="tx-sjroffers-form" method="post" controller="Offer" action="update" name="offer" object="{offer}" arguments="{organization : offer.organization}">
 				<label for="title">Titel</label>
 				<f:form.textfield id="title" property="title" size="46" /><br />
