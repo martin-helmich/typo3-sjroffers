@@ -36,6 +36,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	
 	/**
 	 * @var string The title of the offer
+	 * @validate NotEmpty
 	 * @validate StringLength(minimum = 3, maximum = 50)
 	 **/
 	protected $title;
