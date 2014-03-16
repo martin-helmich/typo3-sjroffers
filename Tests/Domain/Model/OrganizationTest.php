@@ -166,15 +166,21 @@ class OrganizationTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 		$mockOffer2 = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Offer', array('getContact'), array(), '', FALSE);
 		$mockOffer2->expects($this->any())->method('getContact')->will($this->returnValue($mockPerson2));
 
-		$mockObjectStorage1 = $this->getMock('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
-		$mockObjectStorage1->expects($this->at(0))->method('attach')->with($this->identicalTo($mockPerson1));
-		$mockObjectStorage1->expects($this->at(1))->method('attach')->with($this->identicalTo($mockPerson2));
+		$mockObjectStorage1 = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 
 		$mockOrganization = $this->getMock('\\Sjr\\SjrOffers\\Domain\\Model\\Organization', array('getContacts', 'getOffers'), array(), '', FALSE);
 		$mockOrganization->expects($this->once())->method('getContacts')->will($this->returnValue($mockObjectStorage1));
 		$mockOrganization->expects($this->once())->method('getOffers')->will($this->returnValue(array($mockOffer1, $mockOffer2)));		
 		
-		$mockOrganization->getAllContacts();
+		$contacts = $mockOrganization->getAllContacts();
+
+		$this->assertInstanceOf('\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', $contacts);
+
+		$contacts = $contacts->toArray();
+
+		$this->assertCount(2, $contacts);
+		$this->assertSame($mockPerson1, $contacts[0]);
+		$this->assertSame($mockPerson2, $contacts[1]);
 	}
 	
 	/**
