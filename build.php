@@ -17,7 +17,7 @@ $createPackage = function() use ($_EXTKEY, $conf) {
         return 1;
 	}
 
-	$filename = sprintf("../%s-%s.zip", $_EXTKEY, $conf['version']);
+	$filename = sprintf("../%s_%s.zip", $_EXTKEY, $conf['version']);
 	exec("zip -r $filename .");
 	echo("Created $filename.\n");
 };
